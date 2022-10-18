@@ -8,9 +8,9 @@ An app to track problems, track bugs, and plan future features during a devlopme
 - User Log in and authentication(Google Auth?)
 - User profiles
 - Filter issues by type (Bugs, Plans, Requests)
-- Communicate with database to save user date (Firebase?)
+- Communicate with database to store/retrieve user date (Firebase?)
 
-## Possible Ideas:
+## Stretch Goals:
 
 - Claim bugs/features
 - Separate projects
