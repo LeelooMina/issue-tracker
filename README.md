@@ -16,4 +16,4 @@ An app to track problems, track bugs, and plan future features during a devlopme
 - Different user tiers(Admin, Read/Write, View Only modes)
 - Profile Photos
 
-![image info](/UI.jpg)
+![UI Sketch](/UI.jpg)
