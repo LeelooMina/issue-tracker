@@ -19,3 +19,6 @@ An app to track problems, track bugs, and plan future features during a devlopme
 - Profile Photos
 
 ![UI Sketch](/UI.jpg)
+
+![Layout Sketch](/layout.jpg)
+
