@@ -8,7 +8,6 @@ An app to track problems, track bugs, and plan future features during a devlopme
 - User Log in and authentication(Google Auth?)
 - User profiles
 - Filter issues by type (Bugs, Plans, Requests)
-- 
 
 ## Possible Ideas:
 
