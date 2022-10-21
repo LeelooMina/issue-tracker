@@ -20,7 +20,10 @@ import { HomeComponent } from './home/home.component';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { SignInComponent } from './signin/signin.component';
+import { AuthService } from './shared/auth.service';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 
@@ -42,14 +45,16 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     ProjectAdminPageComponent,
     UserSettingsComponent,
     HomeComponent,
+    SignInComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 
