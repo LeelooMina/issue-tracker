@@ -16,6 +16,7 @@ import { SettingsComponent } from './user-profile/settings/settings.component';
 import { ProjectGroupsComponent } from './user-profile/project-groups/project-groups.component';
 import { ProjectAdminPageComponent } from './user-profile/project-admin-page/project-admin-page.component';
 import { UserSettingsComponent } from './user-profile/user-settings/user-settings.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { UserSettingsComponent } from './user-profile/user-settings/user-setting
     ProjectGroupsComponent,
     ProjectAdminPageComponent,
     UserSettingsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
