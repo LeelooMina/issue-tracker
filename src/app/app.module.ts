@@ -18,6 +18,12 @@ import { ProjectAdminPageComponent } from './user-profile/project-admin-page/pro
 import { UserSettingsComponent } from './user-profile/user-settings/user-settings.component';
 import { HomeComponent } from './home/home.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+
+
 
 @NgModule({
   declarations: [
@@ -36,12 +42,23 @@ import { HomeComponent } from './home/home.component';
     ProjectAdminPageComponent,
     UserSettingsComponent,
     HomeComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+}
+
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
