@@ -1,0 +1,21 @@
+
+<div class="field">
+  <h1 class="title">
+    <p>Add or Edit Project</p>
+  </h1>
+
+  <form (ngSubmit)="onSubmit(addProject)" #addProject="ngForm">
+    <div class="field">
+      <label class="label">Project Name:</label>
+      <div class="control">
+        <input name="projectName" class="input" ngModel required>
+      </div>
+    </div>
+
+    <label class="label">Description:</label>
+    <input name="projectDes" class="textarea" ngModel>
+    <p> Allowed Users</p>
+    <button type="submit" class="button is-primary">Add Project</button>
+  </form>
+</div>
+
