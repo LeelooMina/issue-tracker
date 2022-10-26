@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Issue } from './issue.model';
+import { doc, setDoc } from "firebase/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,9 @@ export class IssueService {
   getIssues(){
     return this.issues.slice();
   }
+
+  
+
 
   constructor() { }
 }
