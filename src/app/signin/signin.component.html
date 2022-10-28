@@ -1,4 +1,61 @@
-<p>signin works!</p>
+<!-- <div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="e.g Alex Smith">
+  </div>
+</div> -->
+
+<!-- <div>
+<div class="field">
+  <form (ngSubmit)="authService.onSubmitAuth(authForm)" #authForm="ngForm">
+    <label class="label">Email:</label>
+  <input type="email"
+  class="input is-rounded"
+  ngModel
+  required
+  email>
+
+  <div class="field">
+  <input type="password"
+  class="input is-rounded"
+  ngModel
+  required
+  password>
+
+</div> -->
+
+<form (ngSubmit)="authService.onSubmitAuth(authForm)" #authForm="ngForm">
+
+<div class="field">
+  <label class="label">Email:</label>
+  <div class="control">
+    <input
+    class="input is-rounded"
+    type="email"
+    name="email"
+    placeholder="you@test.com"
+
+    required
+    email>
+  </div>
+
+
+</div>
+
+<div class="field">
+  <label class="label">Password:</label>
+  <div class="control">
+    <input class="input is-rounded"
+    type="password"
+    placeholder="Make it a good one"
+    
+  required
+  password>
+  </div>
+</div>
+
+<button type="submit" class="button is-primary">Submit</button>
+</form>
 
 <div class="formGroup">
   <button type="button" (click)="authService.GoogleAuth()">
