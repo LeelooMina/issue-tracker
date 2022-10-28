@@ -57,7 +57,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService ],
   bootstrap: [AppComponent]
 })
 
