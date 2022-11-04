@@ -11,13 +11,19 @@ import { ProjectService } from 'src/app/shared/project.service';
 
 export class AddEditProjectsComponent implements OnInit {
 
-  onSubmit(addProject: Form){
-    let project = {
-    name: addProject.projectName,
-  description: string,
-  allowedUsers: string[],
-  ID: number
-  }
+  onSubmit(addProject){
+ let project = {
+    name: addProject.value.projectName,
+  description: addProject.value.projectDes,
+  allowedUsers: "",
+  ID: 0 }
+
+  this.projectService.postProjects(project);
+
+  console.log(addProject.value);
+
+}
+
 
   constructor(private projectService: ProjectService) { }
 

@@ -26,6 +26,7 @@ import { AuthService } from './shared/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-projects.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -55,7 +56,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AuthService ],
   bootstrap: [AppComponent]

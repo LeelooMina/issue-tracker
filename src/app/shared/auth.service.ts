@@ -16,20 +16,20 @@ export class AuthService {
 
 
 
-  // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new GoogleAuthProvider());
-  }
-  // Auth logic to run auth providers
-  AuthLogin(provider) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-        console.log('You have been successfully logged in!');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // // Sign in with Google
+  // GoogleAuth() {
+  //   return this.AuthLogin(new GoogleAuthProvider());
+  // }
+  // // Auth logic to run auth providers
+  // AuthLogin(provider) {
+  //   return this.afAuth
+  //     .signInWithPopup(provider)
+  //     .then((result) => {
+  //       console.log(result);
+  //       console.log('You have been successfully logged in!');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 }

@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Project } from './project.model';
 import { doc, setDoc } from "firebase/firestore";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpEventType
+} from '@angular/common/http';
+import { map, catchError, tap } from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
+
 // import { initializeApp } from "firebase/app";
 // import { getFirestore } from "firebase/firestore";
 // // Import the functions you need from the SDKs you need
@@ -17,36 +26,52 @@ import { doc, setDoc } from "firebase/firestore";
   providedIn: 'root'
 })
 export class ProjectService {
-  private projects: Project[] = [{
-    name: "Project 1",
-    description: "describe project",
-    allowedUsers: ["Admin", "User1", "User3"],
-    ID: 1
-  },
-  {
-    name: "Project 2",
-    description: "describe project",
-    allowedUsers: ["Admin", "User2", "User3"],
-    ID: 2
-  },
-  {
-    name: "Project 3",
-    description: "describe project",
-    allowedUsers: ["Admin", "User1", "User2"],
-    ID: 3
-  }]
+  private projects: Project[] = [];
 
 
 
 
   getProjects(){
+    this.fetchProjects();
     return this.projects.slice();
   }
 
-  postProjects(){
+  postProjects(project){
     //https://console.firebase.google.com/u/0/project/it-db-ad530/database/it-db-ad530-default-rtdb/data/~2F
+
+    this.http.post(
+        'https://it-db-ad530-default-rtdb.firebaseio.com/projects.json',
+        project,
+        {
+          observe: 'response'
+        }
+      )
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+        },
+      );
 
   }
 
-  constructor() { }
+  private fetchProjects(){
+    this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+      let projectArr = [];
+      for(let key in respData){
+        projectArr.push({ ...respData[key], ID: key})
+      }
+      return projectArr;
+    }))
+    .subscribe(project => {
+
+      console.log(project);
+      this.projects = project;
+
+      // this.projects.push(project)
+    })
+    //emit new project
+    //filter out projects by user currently logged in
+  }
+
+  constructor(private http: HttpClient) { }
 }
