@@ -9,6 +9,8 @@ import {
 } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
+import { AuthService } from './auth.service';
+
 
 // import { initializeApp } from "firebase/app";
 // import { getFirestore } from "firebase/firestore";
@@ -82,10 +84,10 @@ export class ProjectService {
       for(let key in respData){
         projectArr.push({ ...respData[key], ID: key})
       }
-      return projectArr;
+      return projectArr.filter(p => p.allowedUsers.includes(this.authService.loggedInUser.email));
     }))
   }
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 }
