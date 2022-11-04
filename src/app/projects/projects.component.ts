@@ -14,6 +14,11 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectList = this.projectService.getProjects();
+
+this.projectService.onFetchProjects().subscribe((payload)=>{
+this.projectList = payload
+})
+    // Subscribe to that subject here
   }
 
 }

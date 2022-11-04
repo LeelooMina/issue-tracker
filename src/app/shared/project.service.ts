@@ -64,14 +64,28 @@ export class ProjectService {
     }))
     .subscribe(project => {
 
-      console.log(project);
+      console.log("payload", project);
       this.projects = project;
 
       // this.projects.push(project)
+
+      // Add a subject to call next
     })
     //emit new project
     //filter out projects by user currently logged in
   }
+
+
+  onFetchProjects(){
+    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+      let projectArr = [];
+      for(let key in respData){
+        projectArr.push({ ...respData[key], ID: key})
+      }
+      return projectArr;
+    }))
+  }
+
 
   constructor(private http: HttpClient) { }
 }
