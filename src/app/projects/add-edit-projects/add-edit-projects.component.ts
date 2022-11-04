@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class AddEditProjectsComponent implements OnInit {
 
   onSubmit(addProject){
+    console.log("email", this.authService.loggedInUser.email)
  let project = {
     name: addProject.value.projectName,
   description: addProject.value.projectDes,

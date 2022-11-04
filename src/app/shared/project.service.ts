@@ -82,9 +82,10 @@ export class ProjectService {
     return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
-        projectArr.push({ ...respData[key], ID: key})
+        if (respData[key].allowedUsers.email.includes(this.authService.loggedInUser.email)){
+        projectArr.push({ ...respData[key], ID: key})}
       }
-      return projectArr.filter(p => p.allowedUsers.email.includes(this.authService.loggedInUser.email));
+      return projectArr.filter(p => p.allowedUsers.includes(this.authService.loggedInUser.email));
     }))
   }
 
