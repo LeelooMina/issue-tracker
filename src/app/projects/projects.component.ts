@@ -13,7 +13,7 @@ export class ProjectsComponent implements OnInit {
   projectList: Project[] = []
 
   ngOnInit(): void {
-    this.projectList = this.projectService.getProjects();
+    // this.projectList = this.projectService.getProjects();
 
 this.projectService.onFetchProjects().subscribe((payload)=>{
 this.projectList = payload

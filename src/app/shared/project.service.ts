@@ -84,7 +84,7 @@ export class ProjectService {
       for(let key in respData){
         projectArr.push({ ...respData[key], ID: key})
       }
-      return projectArr.filter(p => p.allowedUsers.includes(this.authService.loggedInUser.email));
+      return projectArr.filter(p => p.allowedUsers.email.includes(this.authService.loggedInUser.email));
     }))
   }
 
