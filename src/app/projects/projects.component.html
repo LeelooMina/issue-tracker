@@ -1,24 +1,28 @@
-<p> Project List </p>
+<div class="container is-centered is-max-desktop">
+  <h1>Project List</h1>
+</div>
 
 <!--remove drop down shadow-->
-
 <div *ngFor="let project of projectList">
-  <div class="card">
-    <header class="card-header">
-      <p class="card-header-title">
-        {{ project.name}}</p>
+<div class="columns is-centered">
+    <div class="column container is-max-desktop">
+      <header class="card-header has-background-primary" (click)="loadProject(project)">
+        <p class="card-header-title is-primary">
+          {{ project.name }}
+        </p>
       </header>
 
-
-        <div class="card">
-  <div class="card-content">
-    <div class="content">
-      <p>{{ project.description}}</p>
-        <p>Allowed: {{project.allowedUsers}}</p>
-        <p>ID: {{project.ID }}</p>
-
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            <p>{{ project.description }}</p>
+            <p>Allowed: {{ project.allowedUsers }}</p>
+            <p>ID: {{ project.ID }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div></div></div>
+  </div>
 
-<a class="button is-primary" routerLink="/edit-project" >Add a new project </a>
+<a class="button is-primary" routerLink="/edit-project">Add a new project </a>

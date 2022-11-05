@@ -12,6 +12,10 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService) { }
   projectList: Project[] = []
 
+  loadProject(project){
+    console.log(project)
+  }
+
   ngOnInit(): void {
     // this.projectList = this.projectService.getProjects();
 
