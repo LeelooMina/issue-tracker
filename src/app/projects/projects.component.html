@@ -8,8 +8,7 @@
     <div class="column container is-max-desktop">
       <header class="card-header has-background-primary" (click)="loadProject(project)">
         <p class="card-header-title is-primary">
-          {{ project.name }}
-        </p>
+          {{ project.name }} <p (click)="this.projectService.deleteProject(project)">X</p>
       </header>
 
       <div class="card">

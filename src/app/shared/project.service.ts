@@ -56,6 +56,16 @@ export class ProjectService {
 
   }
 
+  deleteProject(project){
+    let alertResp = confirm(`Do you really want to delete ${project.name}?`)
+
+    if (alertResp){
+      alert(`${project.name} is not gone forever.`)
+    }
+    else{
+      alert(`${project.name} saved from the fire. This time.`)
+    }
+  }
   // private fetchProjects(){
   //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
   //     let projectArr = [];
@@ -77,6 +87,7 @@ export class ProjectService {
   //   //emit new project
   //   //filter out projects by user currently logged in
   // }
+
 
 
   onFetchProjects(){
