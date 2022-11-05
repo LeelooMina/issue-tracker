@@ -34,6 +34,7 @@ const routes: Routes = [
     component: ProjectViewComponent
   },
 
+
   {
     path: '',
     redirectTo: 'home',

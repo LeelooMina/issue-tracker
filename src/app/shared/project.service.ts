@@ -60,10 +60,11 @@ export class ProjectService {
     let alertResp = confirm(`Do you really want to delete ${project.name}?`)
 
     if (alertResp){
+
       alert(`${project.name} is now gone forever.`)
     }
     else{
-      alert(`${project.name} saved from the fire. This time.`)
+      alert(`${project.name} was saved from the fire. This time.`)
     }
   }
   // private fetchProjects(){
