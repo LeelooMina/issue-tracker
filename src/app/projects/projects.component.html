@@ -15,9 +15,10 @@
 <div *ngFor="let project of projectList">
 <div class="columns is-centered">
     <div class="column container is-max-desktop">
-      <header class="card-header has-background-primary" (click)="loadProject(project)">
+      <header class="card-header has-background-primary">
         <p class="card-header-title is-primary">
-          {{ project.name }} <p (click)="this.projectService.deleteProject(project)">X</p>
+         <a routerLink="/project-view">{{ project.name }}</a>
+          <p (click)="this.projectService.deleteProject(project)">X</p>
       </header>
 
       <div class="card">

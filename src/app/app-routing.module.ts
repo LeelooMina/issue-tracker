@@ -6,6 +6,7 @@ import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-
 import { ProjectsComponent } from './projects/projects.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProjectViewComponent } from './projects/project-view/project-view.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,10 @@ const routes: Routes = [
     path: 'edit-project',
     component: AddEditProjectsComponent
   },
-
+  {
+    path: 'project-view',
+    component: ProjectViewComponent
+  },
 
   {
     path: '',
