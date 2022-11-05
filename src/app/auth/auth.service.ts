@@ -30,11 +30,10 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.loggedInUser.name = result.user.displayName;
-        this.loggedInUser.email = result.user.email;
         console.log(result);
         console.log(this.loggedInUser)
         console.log('You have been successfully logged in!');
+
       })
       .catch((error) => {
         console.log(error);

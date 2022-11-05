@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 
 
 // import { initializeApp } from "firebase/app";
@@ -34,7 +34,7 @@ export class ProjectService {
 
 
   getProjects(){
-    this.fetchProjects();
+    // this.fetchProjects();
     return this.projects.slice();
   }
 
@@ -56,36 +56,40 @@ export class ProjectService {
 
   }
 
-  private fetchProjects(){
-    this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
-      let projectArr = [];
-      for(let key in respData){
-        projectArr.push({ ...respData[key], ID: key})
-      }
-      return projectArr;
-    }))
-    .subscribe(project => {
+  // private fetchProjects(){
+  //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+  //     let projectArr = [];
+  //     for(let key in respData){
+  //       if(respData[key].allowedUsers.includes(this.authService.loggedInUser.email)){
+  //       projectArr.push({ ...respData[key], ID: key})
+  //     }}
+  //     return projectArr;
+  //   }))
+  //   .subscribe(project => {
 
-      console.log("payload", project);
-      this.projects = project;
+  //     console.log("payload", project);
+  //     this.projects = project;
 
-      // this.projects.push(project)
+  //     // this.projects.push(project)
 
-      // Add a subject to call next
-    })
-    //emit new project
-    //filter out projects by user currently logged in
-  }
+  //     // Add a subject to call next
+  //   })
+  //   //emit new project
+  //   //filter out projects by user currently logged in
+  // }
 
 
   onFetchProjects(){
+
     return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
-        if (respData[key].allowedUsers.email.includes(this.authService.loggedInUser.email)){
-        projectArr.push({ ...respData[key], ID: key})}
+
+        projectArr.push({ ...respData[key], ID: key})
+
       }
-      return projectArr.filter(p => p.allowedUsers.includes(this.authService.loggedInUser.email));
+      console.log(projectArr)
+      return projectArr;
     }))
   }
 

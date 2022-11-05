@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
 import { Project } from 'src/app/shared/project.model';
 import { ProjectService } from 'src/app/shared/project.service';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-add-edit-projects',
