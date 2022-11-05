@@ -60,7 +60,7 @@ export class ProjectService {
     let alertResp = confirm(`Do you really want to delete ${project.name}?`)
 
     if (alertResp){
-      alert(`${project.name} is not gone forever.`)
+      alert(`${project.name} is now gone forever.`)
     }
     else{
       alert(`${project.name} saved from the fire. This time.`)
