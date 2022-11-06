@@ -39,11 +39,14 @@
     <input
     class="input is-rounded"
     type="email"
+    ngModel
     name="email"
     placeholder="you@test.com"
-    ngModel
     required
     email>
+  </div>
+  <div *ngIf="authForm.errors?.['required']">
+    Name is required.
   </div>
 
 
@@ -56,6 +59,7 @@
     type="password"
     placeholder="Make it a good one"
     ngModel
+    name="password"
   required
   password>
   </div>
