@@ -41,7 +41,7 @@
     type="email"
     name="email"
     placeholder="you@test.com"
-
+    ngModel
     required
     email>
   </div>
@@ -55,12 +55,12 @@
     <input class="input is-rounded"
     type="password"
     placeholder="Make it a good one"
-
+    ngModel
   required
   password>
   </div>
 
-  <button type="submit" class="button is-primary">Submit</button>
+  <button type="submit" class="button is-primary" [disabled]="!authForm.valid">Submit</button>
 
 </div>
 </form>
