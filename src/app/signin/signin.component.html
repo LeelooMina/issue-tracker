@@ -29,16 +29,15 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <form
-            (ngSubmit)="onSubmitAuth(authForm)"
-            #authForm="ngForm"
-          >
+          <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm">
             <div class="box is-light">
               <label class="label m-2">Email:</label>
+
               <div class="control">
                 <input
                   class="input is-rounded m-1"
                   type="email"
+                  #email="ngModel"
                   ngModel
                   name="email"
                   placeholder="you@test.com"
@@ -46,19 +45,27 @@
                   email
                 />
               </div>
-              <div *ngIf="authForm.errors?.['required']">Name is required.</div>
+              <div *ngIf="!email.valid">
+                <p class="is-size-7 ml-3">Valid email is required</p>
+              </div>
 
               <label class="label m-2">Password:</label>
+
               <div class="control">
                 <input
                   class="input is-rounded m-1"
                   type="password"
                   placeholder="Make it a good one"
+                  #password="ngModel"
                   ngModel
                   name="password"
                   required
                   password
+                  minlength="6"
                 />
+                <div *ngIf="!password.valid">
+                  <p class="is-size-7 ml-3">Must be at least 6 characters</p>
+                </div>
               </div>
 
               <button
