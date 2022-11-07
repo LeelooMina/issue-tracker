@@ -56,6 +56,21 @@ export class ProjectService {
 
   }
 
+   deleteProjects(projectID){
+    this.http.delete(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}`,
+      {
+        observe: 'response'
+      }
+    )
+    .subscribe(
+      responseData => {
+        console.log(responseData);
+      },
+    );
+
+  }
+
   private fetchProjects(){
     this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
       let projectArr = [];
