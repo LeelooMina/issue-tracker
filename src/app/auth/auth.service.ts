@@ -22,7 +22,7 @@ interface GoogleAuthResponseData {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(public afAuth: AngularFireAuth, private http: HttpClient) {}
+  constructor(public afireAuth: AngularFireAuth, private http: HttpClient) {}
 
   signUp(email: string, password: string) {
     return this.http.post<AuthResponseData>(
@@ -32,7 +32,7 @@ export class AuthService {
         password: password,
         returnSecureToken: true,
       }
-    ).;
+    )
   }
 
   loggedInUser = {
@@ -40,15 +40,7 @@ export class AuthService {
     email: '',
   };
 
-  onSubmitAuth(authForm: NgForm) {
-    if (!authForm.valid){
-      return;
-    }
-    let email = authForm.value.email
-    let password = authForm.value.password
-    this.signUp(email, password)
-    authForm.reset();
-  }
+
 
   // Sign in with Google
   GoogleAuth() {
@@ -57,7 +49,7 @@ export class AuthService {
 
   // Auth logic to run auth providers
   AuthLogin(provider) {
-    return this.afAuth
+    return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
         console.log(result);
