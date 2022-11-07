@@ -15,7 +15,11 @@ export class SignInComponent implements OnInit {
     }
     let email = authForm.value.email
     let password = authForm.value.password
-    this.authService.signUp(email, password)
+    this.authService.signUp(email, password).subscribe(resData => {
+      console.log(resData)
+    }, error => {
+      console.log(error)
+    })
     authForm.reset();
   }
 
