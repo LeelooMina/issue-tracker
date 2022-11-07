@@ -43,8 +43,8 @@ export class AuthService {
   onSubmitAuth(authForm: NgForm) {
     let email = authForm.value.email
     let password = authForm.value.password
-    console.log(authForm.value.email);
-    console.log(authForm.value.password)
+    console.log(email);
+    console.log(password)
     authForm.reset();
   }
 
