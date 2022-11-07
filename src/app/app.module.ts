@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { LogInComponent } from './log-in/log-in.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SidebarComponent } from './navbar/sidebar/sidebar.component';
 import { ProjectViewComponent } from './projects/project-view/project-view.component';
@@ -35,7 +34,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     ProjectsComponent,
-    LogInComponent,
     UserProfileComponent,
     SidebarComponent,
     ProjectViewComponent,
