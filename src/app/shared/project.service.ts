@@ -9,7 +9,6 @@ import {
 } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
-import { AuthService } from './auth.service';
 
 
 // import { initializeApp } from "firebase/app";
@@ -34,7 +33,6 @@ export class ProjectService {
 
 
   getProjects(){
-    this.fetchProjects();
     return this.projects.slice();
   }
 
@@ -56,6 +54,7 @@ export class ProjectService {
 
   }
 
+<<<<<<< HEAD
    deleteProjects(projectID){
     this.http.delete(
       `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}`,
@@ -80,27 +79,54 @@ export class ProjectService {
       return projectArr;
     }))
     .subscribe(project => {
+=======
+  deleteProject(project){
+    let alertResp = confirm(`Do you really want to delete ${project.name}?`)
+>>>>>>> e7e54863c44cf5627025b4c7feb5e1dceac5fd61
 
-      console.log("payload", project);
-      this.projects = project;
+    if (alertResp){
 
-      // this.projects.push(project)
-
-      // Add a subject to call next
-    })
-    //emit new project
-    //filter out projects by user currently logged in
+      alert(`${project.name} is now gone forever.`)
+    }
+    else{
+      alert(`${project.name} was saved from the fire. This time.`)
+    }
   }
+  // private fetchProjects(){
+  //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+  //     let projectArr = [];
+  //     for(let key in respData){
+  //       if(respData[key].allowedUsers.includes(this.authService.loggedInUser.email)){
+  //       projectArr.push({ ...respData[key], ID: key})
+  //     }}
+  //     return projectArr;
+  //   }))
+  //   .subscribe(project => {
+
+  //     console.log("payload", project);
+  //     this.projects = project;
+
+  //     // this.projects.push(project)
+
+  //     // Add a subject to call next
+  //   })
+  //   //emit new project
+  //   //filter out projects by user currently logged in
+  // }
+
 
 
   onFetchProjects(){
+
     return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
-        if (respData[key].allowedUsers.email.includes(this.authService.loggedInUser.email)){
-        projectArr.push({ ...respData[key], ID: key})}
+
+        projectArr.push({ ...respData[key], ID: key})
+
       }
-      return projectArr.filter(p => p.allowedUsers.includes(this.authService.loggedInUser.email));
+      console.log(projectArr)
+      return projectArr;
     }))
   }
 

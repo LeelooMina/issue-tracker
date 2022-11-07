@@ -22,7 +22,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { SignInComponent } from './signin/signin.component';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './auth/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-projects.component';
 import { FormsModule } from '@angular/forms';
