@@ -32,7 +32,7 @@ export class AuthService {
         password: password,
         returnSecureToken: true,
       }
-    );
+    ).;
   }
 
   loggedInUser = {
@@ -41,10 +41,12 @@ export class AuthService {
   };
 
   onSubmitAuth(authForm: NgForm) {
+    if (!authForm.valid){
+      return;
+    }
     let email = authForm.value.email
     let password = authForm.value.password
-    console.log(email);
-    console.log(password)
+    this.signUp(email, password)
     authForm.reset();
   }
 
