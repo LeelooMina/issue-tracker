@@ -56,6 +56,7 @@ export class ProjectService {
 
   }
 
+
    deleteProjects(projectID){
     this.http.delete(
       `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}`,
