@@ -82,6 +82,8 @@ export class ProjectService {
     }))
     .subscribe(project => {
 =======
+    .subscribe(project => {})}
+
   deleteProject(project){
     let alertResp = confirm(`Do you really want to delete ${project.name}?`)
 >>>>>>> e7e54863c44cf5627025b4c7feb5e1dceac5fd61
