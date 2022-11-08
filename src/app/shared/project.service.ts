@@ -38,8 +38,7 @@ export class ProjectService {
     return this.projects.slice();
   }
 
-  postProjects(project){
-    //https://console.firebase.google.com/u/0/project/it-db-ad530/database/it-db-ad530-default-rtdb/data/~2F
+  postProjects(project: Project){
 
     this.http.post(
         'https://it-db-ad530-default-rtdb.firebaseio.com/projects.json',
@@ -67,7 +66,8 @@ export class ProjectService {
     }))
     .subscribe(project => {})}
 
-  deleteProject(project){
+
+  deleteProject(project: Project){
     let alertResp = confirm(`Do you really want to delete ${project.name}?`)
     if (alertResp){
       this.http.delete(
@@ -116,7 +116,7 @@ export class ProjectService {
 
   onFetchProjects(){
 
-    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="blankpage@gmail.com"&endAt="blankpage@gmail.com"').pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
 
