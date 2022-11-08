@@ -20,12 +20,14 @@
 
 
 <div *ngFor="let project of projectList">
-<div class="columns is-centered">
+<div class="columns is-centered m-1">
     <div class="column container is-max-desktop">
       <header class="card-header has-background-primary">
         <p class="card-header-title is-primary">
          <a routerLink="/project-view">{{ project.name }}</a>
-          <p (click)="onDelete(project)">X</p>
+         <div class="is-right px-2 py-2">
+          <button class="delete is-large" (click)="onDelete(project)"></button>
+         </div>
       </header>
 
       <div class="card">
@@ -39,6 +41,6 @@
       </div>
     </div>
   </div>
-  </div>
+  </div></div>
 
 
