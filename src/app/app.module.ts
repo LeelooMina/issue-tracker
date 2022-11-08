@@ -27,6 +27,7 @@ import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 
 
@@ -49,6 +50,7 @@ import { FooterComponent } from './footer/footer.component';
     SignInComponent,
     AddEditProjectsComponent,
     FooterComponent,
+    LoadingSpinnerComponent
 
   ],
   imports: [
