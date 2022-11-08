@@ -3,7 +3,6 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { formatCurrency } from '@angular/common';
 import { auth } from 'firebaseui';
 
 interface AuthResponseData {
@@ -26,7 +25,7 @@ export class AuthService {
 
   signUp(email: string, password: string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAIulQ4jlbybQtXiLWu5qUuTgOtG0Td00E',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAIMaCTohp56bC1GV0lKRd2ek7ot9VBZbI',
       {
         email: email,
         password: password,

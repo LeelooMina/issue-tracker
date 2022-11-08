@@ -9,16 +9,24 @@ import { AuthService } from '../auth/auth.service';
 })
 export class SignInComponent implements OnInit {
 
+  isLoading = false;
+
   onSubmitAuth(authForm: NgForm) {
+
+    this.isLoading = true;
+
     if (!authForm.valid){
+      this.isLoading = false;
       return;
     }
     let email = authForm.value.email
     let password = authForm.value.password
     this.authService.signUp(email, password).subscribe(resData => {
       console.log(resData)
+      this.isLoading = false;
     }, error => {
       console.log(error)
+      this.isLoading = false;
     })
     authForm.reset();
   }

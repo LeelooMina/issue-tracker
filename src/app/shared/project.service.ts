@@ -87,6 +87,17 @@ export class ProjectService {
 >>>>>>> e7e54863c44cf5627025b4c7feb5e1dceac5fd61
 
     if (alertResp){
+      this.http.delete(
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${project.ID}.json`,
+        {
+          observe: 'response'
+        }
+      )
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+        },
+      );
 
       alert(`${project.name} is now gone forever.`)
     }
@@ -94,6 +105,8 @@ export class ProjectService {
       alert(`${project.name} was saved from the fire. This time.`)
     }
   }
+
+
   // private fetchProjects(){
   //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
   //     let projectArr = [];
@@ -134,4 +147,5 @@ export class ProjectService {
 
 
   constructor(private http: HttpClient, private authService: AuthService) { }
+
 }
