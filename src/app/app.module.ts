@@ -26,6 +26,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-projects.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -47,6 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SignInComponent,
     AddEditProjectsComponent,
+    FooterComponent,
 
   ],
   imports: [
