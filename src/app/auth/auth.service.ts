@@ -3,7 +3,6 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { formatCurrency } from '@angular/common';
 import { auth } from 'firebaseui';
 
 interface AuthResponseData {
