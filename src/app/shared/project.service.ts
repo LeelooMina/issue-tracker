@@ -70,19 +70,13 @@ export class ProjectService {
   deleteProject(project: Project){
     let alertResp = confirm(`Do you really want to delete ${project.name}?`)
     if (alertResp){
-      this.http.delete(
+      return this.http.delete(
         `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${project.ID}.json`,
         {
           observe: 'response'
         }
       )
-      .subscribe(
-        responseData => {
-          console.log(responseData);
-        },
-      );
 
-      alert(`${project.name} is now gone forever.`)
     }
     else{
       alert(`${project.name} was saved from the fire. This time.`)

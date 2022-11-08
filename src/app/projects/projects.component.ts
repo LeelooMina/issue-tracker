@@ -16,6 +16,19 @@ export class ProjectsComponent implements OnInit {
     console.log(project)
   }
 
+  onDelete(project){
+    this.projectService.deleteProject(project).subscribe(
+      responseData => {
+        this.projectService.onFetchProjects().subscribe((payload)=>{
+          this.projectList = payload
+          })
+        console.log(responseData);
+      },
+    );
+
+    alert(`${project.name} is now gone forever.`)
+  }
+
   ngOnInit(): void {
     // this.projectList = this.projectService.getProjects();
 

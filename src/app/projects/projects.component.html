@@ -25,7 +25,7 @@
       <header class="card-header has-background-primary">
         <p class="card-header-title is-primary">
          <a routerLink="/project-view">{{ project.name }}</a>
-          <p (click)="this.projectService.deleteProject(project)">X</p>
+          <p (click)="onDelete(project)">X</p>
       </header>
 
       <div class="card">
