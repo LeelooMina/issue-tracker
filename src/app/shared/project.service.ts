@@ -38,8 +38,7 @@ export class ProjectService {
     return this.projects.slice();
   }
 
-  postProjects(project){
-    //https://console.firebase.google.com/u/0/project/it-db-ad530/database/it-db-ad530-default-rtdb/data/~2F
+  postProjects(project: Project){
 
     this.http.post(
         'https://it-db-ad530-default-rtdb.firebaseio.com/projects.json',
@@ -56,21 +55,6 @@ export class ProjectService {
 
   }
 
-// <<<<<<< HEAD
-//    deleteProjects(projectID){
-//     this.http.delete(
-//       `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}`,
-//       {
-//         observe: 'response'
-//       }
-//     )
-//     .subscribe(
-//       responseData => {
-//         console.log(responseData);
-//       },
-//     );
-
-//   }
 
   private fetchProjects(){
     this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
@@ -82,23 +66,17 @@ export class ProjectService {
     }))
     .subscribe(project => {})}
 
-  deleteProject(project){
-    let alertResp = confirm(`Do you really want to delete ${project.name}?`)
 
+  deleteProject(project: Project){
+    let alertResp = confirm(`Do you really want to delete ${project.name}?`)
     if (alertResp){
-      this.http.delete(
+      return this.http.delete(
         `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${project.ID}.json`,
         {
           observe: 'response'
         }
       )
-      .subscribe(
-        responseData => {
-          console.log(responseData);
-        },
-      );
 
-      alert(`${project.name} is now gone forever.`)
     }
     else{
       alert(`${project.name} was saved from the fire. This time.`)
@@ -132,7 +110,7 @@ export class ProjectService {
 
   onFetchProjects(){
 
-    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
+    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="blankpage@gmail.com"&endAt="blankpage@gmail.com"').pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
 

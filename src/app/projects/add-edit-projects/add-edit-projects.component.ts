@@ -14,10 +14,11 @@ export class AddEditProjectsComponent implements OnInit {
 
   onSubmit(addProject: NgForm){
     console.log("email", this.authService.loggedInUser.email)
- let project = {
+ let project: Project  = {
     name: addProject.value.projectName,
   description: addProject.value.projectDes,
-  allowedUsers: this.authService.loggedInUser.email,
+  admin: this.authService.loggedInUser.email,
+  allowedUsers: addProject.value.allowedUsers,
   ID: 0 }
 
   this.projectService.postProjects(project);
