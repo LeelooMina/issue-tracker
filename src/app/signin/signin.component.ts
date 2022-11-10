@@ -8,17 +8,23 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SignInComponent implements OnInit {
-
+  isLoginMode = true;
   isLoading = false;
+
+  onSwitchMode() {
+    this.isLoginMode = !this.isLoginMode;
+  }
 
   onSubmitAuth(authForm: NgForm) {
 
-    this.isLoading = true;
 
     if (!authForm.valid){
       this.isLoading = false;
       return;
     }
+
+    this.isLoading = true;
+
     let email = authForm.value.email
     let password = authForm.value.password
     this.authService.signUp(email, password).subscribe(resData => {

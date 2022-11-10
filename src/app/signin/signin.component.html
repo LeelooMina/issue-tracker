@@ -1,46 +1,3 @@
-<!-- <div class="field">
-  <label class="label">Name</label>
-  <div class="control">
-    <input class="input" type="text" placeholder="e.g Alex Smith">
-  </div>
-</div> -->
-
-<!-- <div>
-<div class="field">
-  <form (ngSubmit)="authService.onSubmitAuth(authForm)" #authForm="ngForm">
-    <label class="label">Email:</label>
-  <input type="email"
-  class="input is-rounded"
-  ngModel
-  required
-  email>
-
-  <div class="field">
-  <input type="password"
-  class="input is-rounded"
-  ngModel
-  required
-  password>
-
-</div> -->
-
-
-<!-- <section class="hero is-primary is-large">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-10-tablet is-10-desktop">
-            <div class="box is-light">
-
-  <h1 class="title has-text-black pb-1">
-    Hello there!
-  </h1>
-  <p class="subtitle has-text-black">
-    Welcome to <strong class="has-text-black">ProjectBox</strong>!
-  </p>
-  <p><span class="has-text-primary">Learn</span> more about us, or <span class="has-text-primary">take a tour</span>?</p>
-</div>
-</div></div></div></div></section> -->
 
 <section class="hero is-primary is-fullheight">
   <div class="hero-body">
@@ -51,8 +8,11 @@
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
           <div class="box is-light"><h1><strong>Get started today!</strong></h1></div></div>
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm">
-            <div class="box is-light">
+          <div class="box is-light">
+            <div *ngIf="isLoading">
+              <app-loading-spinner></app-loading-spinner>
+            </div>
+              <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
               <label class="label m-2">Email:</label>
 
               <div class="control">
@@ -95,10 +55,11 @@
                 class="button is-primary m-3"
                 [disabled]="!authForm.valid"
               >
-                Submit
+                {{ isLoginMode ? 'Login' : 'Sign Up'}}
               </button>
+              <button class="button is-light m-3" (click)="onSwitchMode()"> {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+            </form>
             </div>
-          </form>
 
           <div class="column">
             <button type="button" (click)="authService.GoogleAuth()">
