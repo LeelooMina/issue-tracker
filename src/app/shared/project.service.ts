@@ -108,9 +108,9 @@ export class ProjectService {
 
 
 
-  onFetchProjects(){
+  onFetchProjects(user){
 
-    return this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="blankpage@gmail.com"&endAt="blankpage@gmail.com"').pipe(map(respData => {
+    return this.http.get(`https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="${user}"&endAt="${user}"`).pipe(map(respData => {
       let projectArr = [];
       for(let key in respData){
 

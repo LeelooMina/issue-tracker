@@ -12,6 +12,8 @@ export class ProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService) { }
   projectList: Project[] = []
 
+  user = "blankpage@gmail.com"
+
   loadProject(project){
     console.log(project)
   }
@@ -19,7 +21,7 @@ export class ProjectsComponent implements OnInit {
   onDelete(project){
     this.projectService.deleteProject(project).subscribe(
       responseData => {
-        this.projectService.onFetchProjects().subscribe((payload)=>{
+        this.projectService.onFetchProjects(this.user).subscribe((payload)=>{
           this.projectList = payload
           })
         console.log(responseData);
@@ -32,10 +34,17 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     // this.projectList = this.projectService.getProjects();
 
-this.projectService.onFetchProjects().subscribe((payload)=>{
+this.projectService.onFetchProjects(this.user).subscribe((payload)=>{
 this.projectList = payload
 })
     // Subscribe to that subject here
+  }
+
+  onClickSearch(){
+
+this.projectService.onFetchProjects(this.user).subscribe((payload)=>{
+  this.projectList = payload
+  })
   }
 
 }
