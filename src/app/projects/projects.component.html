@@ -25,7 +25,7 @@
     <div class="column container is-max-desktop">
       <header class="card-header has-background-primary">
         <p class="card-header-title is-primary">
-         <a routerLink="/project-view">{{ project.name }}</a>
+         <a [routerLink]="['/project-view', project.ID]">{{ project.name }}</a>
          <div class="is-right px-2 py-2">
           <button class="delete is-large" (click)="onDelete(project)"></button>
          </div>

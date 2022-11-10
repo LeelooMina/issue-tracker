@@ -30,7 +30,7 @@ const routes: Routes = [
     component: AddEditProjectsComponent
   },
   {
-    path: 'project-view',
+    path: 'project-view/:id',
     component: ProjectViewComponent
   },
 
