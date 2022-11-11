@@ -63,7 +63,7 @@
 
           <div class="column">
             <button type="button" (click)="authService.GoogleAuth()">
-              Log in with Google
+              {{ isLoginMode ? 'Login' : 'Sign up' }} with Google
             </button>
           </div>
         </div>
