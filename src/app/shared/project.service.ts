@@ -83,6 +83,10 @@ export class ProjectService {
     }
   }
 
+  getSingleProject(projectID){
+    
+  }
+
 
   // private fetchProjects(){
   //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
