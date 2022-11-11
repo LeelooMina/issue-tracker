@@ -7,27 +7,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
   </head>
-  <body>
-    <section class="hero is-primary is-large ">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns is-centered">
-            <div class="column is-10-tablet is-10-desktop">
+  <body class="has-background-primary">
+
+        <div class="container is-fullheight">
+          <div class="columns">
+            <div class="column m-6">
               <div class="box is-light">
                 <div class="column"></div><h1 class="title has-text-black pb-1">Welcome!</h1>
                 <p class="subtitle has-text-black">
-                  <strong class="has-text-black">ProjectBox</strong> is a collabrative system for you plan your ideas, map out features, and keep track of known issues once you get the ball rolling.
+                  <strong class="has-text-black">ProjectBox</strong> is a collabrative system for you plan your  <strong class="has-text-black">ideas</strong>, map out new  <strong class="has-text-black">features</strong>, and keep track of known  <strong class="has-text-black">issues</strong> once you get the ball rolling.
                 </p>
-                <button class="button is-primary">Sign Up Now</button>
+                <button class="button is-primary m-2"  [routerLink]="['/sign', 'up']">Sign Up Now</button>
                 <p>
-                  <span class="has-text-primary">Learn</span> more about us, or
-                  <span class="has-text-primary">take a tour</span>?
+                  <strong><span class="has-text-primary">Learn</span></strong> more about us, or
+                <strong><span class="has-text-primary">take a tour</span></strong>?
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+
   </body>
 </html>
