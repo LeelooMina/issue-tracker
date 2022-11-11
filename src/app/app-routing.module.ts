@@ -9,6 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProjectViewComponent } from './projects/project-view/project-view.component';
 import { AddEditIssuesComponent } from './projects/add-edit-issues/add-edit-issues.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { IssueDetailsComponent } from './projects/issue-details/issue-details.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'todolist',
     component: ToDoListComponent
+  },
+  {
+    path: 'issue-details/:id',
+    component: IssueDetailsComponent
   },
 
 
