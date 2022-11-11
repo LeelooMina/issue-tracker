@@ -5,7 +5,15 @@
 
 @media only screen and (max-device-width: 480px) {
   .is-fullheight{
-    height: 87vh
+    height: 87vh;
+
   }
 
+}
+
+li {
+
+  margin-left: 20px;
+  margin-top: 10px;
+  list-style-type: square;
 }

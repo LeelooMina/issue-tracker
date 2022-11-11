@@ -1,31 +1,54 @@
 <html>
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ProjectBox</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<head>
 
-  </head>
-  <body class="has-background-primary">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProjectBox</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-        <div class="container is-fullheight">
-          <div class="columns">
-            <div class="column m-6">
-              <div class="box is-light">
-                <div class="column"></div><h1 class="title has-text-black pb-1">Welcome!</h1>
-                <p class="subtitle has-text-black">
-                  <strong class="has-text-black">ProjectBox</strong> is a collabrative system for you plan your  <strong class="has-text-black">ideas</strong>, map out new  <strong class="has-text-black">features</strong>, and keep track of known  <strong class="has-text-black">issues</strong> once you get the ball rolling.
-                </p>
-                <button class="button is-primary m-2"  [routerLink]="['/sign', 'up']">Sign Up Now</button>
-                <p>
-                  <strong><span class="has-text-primary">Learn</span></strong> more about us, or
-                <strong><span class="has-text-primary">take a tour</span></strong>?
-                </p>
-              </div>
-            </div>
+</head>
+
+<body class="has-background-primary">
+
+  <div class="container is-fullheight">
+    <div class="columns">
+      <div class="column m-6">
+        <div class="box is-light">
+          <div class="column"></div>
+          <h1 class="title has-text-black pb-1">Welcome!</h1>
+          <div class="subtitle has-text-black">
+            <p>
+              <strong class="has-text-black">ProjectBox</strong> is a collabrative system for your projects.
+            </p>
+            <ul>
+              <li>
+                Plan your <strong class="has-text-black">ideas</strong>
+              </li>
+
+              <li>
+                Map out new <strong class="has-text-black">features</strong>,
+              </li>
+
+              <li>
+                Keep track of known <strong class="has-text-black">issues</strong>
+                once you get the ball rolling.
+              </li>
+
+            </ul>
           </div>
+          <button class="button is-primary m-2" [routerLink]="['/sign', 'up']">Sign Up Now</button>
+          <p>
+            <strong><span class="has-text-primary">Learn</span></strong> more about us, or
+            <strong><span class="has-text-primary">take a tour</span></strong>?
+          </p>
         </div>
+      </div>
+      <div class="column">
+        <div class="box is-light">Check</div></div>
+    </div>
+  </div>
 
-  </body>
-</html>
+
+
+</body>
