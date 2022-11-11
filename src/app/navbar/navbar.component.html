@@ -18,7 +18,7 @@
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
 
-    </a> 
+    </a>
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu"  [class.is-active]="showBurgerMenu">
@@ -58,23 +58,25 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <!-- <div *ngIf="loggedinUser != null"> -->
+
+          <button class="button" (click)="onClick()">Login/out test</button>
+          <div *ngIf="isLoggedin">
           <a class="button is-primary" routerLink="/edit-project"><strong>Add a new project</strong></a>
           <a class="button is-light"
           routerLink="/logout">
             Log Out
           </a>
-          <img src="assets/avatar-placeholder.png" routerLink="/profile">
+          <img class="m-1" src="assets/avatar-placeholder.png" routerLink="/profile"></div>
 
-
+          <div *ngIf="isLoggedin === false">
           <a class="button is-primary"
-          routerLink="/signin">
+          [routerLink]="['/sign', 'up']">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light" routerLink="/signin"
-          routerLinkActive="active">
+          <a class="button is-light" [routerLink]="['/sign', 'in']">
             Log in
           </a>
+          </div>
 
         </div>
       </div>

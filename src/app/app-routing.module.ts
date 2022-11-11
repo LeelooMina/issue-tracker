@@ -7,10 +7,13 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SignInComponent } from './signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ProjectViewComponent } from './projects/project-view/project-view.component';
+import { AddEditIssuesComponent } from './projects/add-edit-issues/add-edit-issues.component';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { IssueDetailsComponent } from './projects/issue-details/issue-details.component';
 
 const routes: Routes = [
   {
-    path: 'signin',
+    path: 'sign/:id',
     component: SignInComponent
   },
   {
@@ -32,6 +35,18 @@ const routes: Routes = [
   {
     path: 'project-view/:id',
     component: ProjectViewComponent
+  },
+  {
+    path: 'add-issue/:id',
+    component: AddEditIssuesComponent
+  },
+  {
+    path: 'todolist',
+    component: ToDoListComponent
+  },
+  {
+    path: 'issue-details/:id',
+    component: IssueDetailsComponent
   },
 
 

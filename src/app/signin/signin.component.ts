@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -38,6 +39,17 @@ export class SignInComponent implements OnInit {
   }
 
 
-  constructor(public authService: AuthService) {}
-  ngOnInit() {}
+  constructor(public authService: AuthService, private route: ActivatedRoute) {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params['id'])
+      if(params['id'] === 'in'){
+        this.isLoginMode = true;
+      }
+      else if(params['id'] === 'up'){
+        this.isLoginMode = false;
+      }
+
+  })
+  }
 }

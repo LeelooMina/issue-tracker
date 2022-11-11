@@ -4,4 +4,5 @@ export interface Issue{
   user: string,
   type: string,
   projectID: number
+  ID: number;
 }
