@@ -23,21 +23,24 @@ export class IssueService {
     description: "describe issues",
     user: "username / ID",
     type: "Bug",
-    projectID: 1
+    projectID: 1,
+    ID: 1
   },
   {
     title: "Title",
     description: "describe issues",
     user: "username / ID",
     type: "Feature Request",
-    projectID: 1
+    projectID: 1,
+    ID: 2
   },
   {
   title: "Title",
     description: "describe issues",
     user: "username / ID",
     type: "Future Feature",
-    projectID: 1
+    projectID: 1,
+    ID: 3
   }]
 
   getIssues(){
