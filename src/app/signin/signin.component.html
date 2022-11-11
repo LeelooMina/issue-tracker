@@ -1,73 +1,58 @@
+<body class="has-background-primary">
 
-<section class="hero is-primary is-fullheight">
-  <div class="hero-body">
-    <div class="container">
+  <div class="container has-background-primary is-fullheight">
 
-      <div class="columns is-centered">
+    <div class="columns is-centered">
 
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <div class="box is-light"><h1><strong>{{ isLoginMode ? 'Welcome back!' :'Get started today!' }}</strong></h1></div></div>
-        <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <div class="box is-light">
-            <div *ngIf="isLoading">
-              <app-loading-spinner></app-loading-spinner>
-            </div>
-              <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
-              <label class="label m-2">Email:</label>
-
-              <div class="control">
-                <input
-                  class="input is-rounded m-1"
-                  type="email"
-                  #email="ngModel"
-                  ngModel
-                  name="email"
-                  placeholder="you@test.com"
-                  required
-                  email
-                />
-              </div>
-              <div *ngIf="!email.valid">
-                <p class="is-size-7 ml-3">Valid email required</p>
-              </div>
-
-              <label class="label m-2">Password:</label>
-
-              <div class="control">
-                <input
-                  class="input is-rounded m-1"
-                  type="password"
-                  placeholder="Make it a good one"
-                  #password="ngModel"
-                  ngModel
-                  name="password"
-                  required
-                  password
-                  minlength="6"
-                />
-                <div *ngIf="!password.valid">
-                  <p class="is-size-7 ml-3">Must be at least 6 characters</p>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                class="button is-primary m-3"
-                [disabled]="!authForm.valid"
-              >
-                {{ isLoginMode ? 'Login' : 'Sign Up'}}
-              </button>
-              <button class="button is-light m-3" (click)="onSwitchMode()"> {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
-            </form>
-            </div>
-
-          <div class="column">
-            <button type="button" (click)="authService.GoogleAuth()">
-              {{ isLoginMode ? 'Login' : 'Sign up' }} with Google
-            </button>
+      <div class="column">
+        <div class="box is-light m-5 p-5">
+          <h1><strong>{{ isLoginMode ? 'Welcome back!' :'Get started today!' }}</strong></h1>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box is-light m-5 p-2">
+          <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
           </div>
+          <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
+            <label class="label m-2">Email:</label>
+
+            <div class="control">
+              <input class="input is-rounded m-1" type="email" #email="ngModel" ngModel name="email"
+                placeholder="you@test.com" required email />
+            </div>
+            <div *ngIf="!email.valid  && !isLoginMode">
+              <p class="is-size-7 ml-3">Valid email required</p>
+            </div>
+
+            <label class="label m-2">Password:</label>
+
+            <div class="control">
+              <input class="input is-rounded m-1" type="password" placeholder="Make it a good one" #password="ngModel"
+                ngModel name="password" required password minlength="6" />
+              <div *ngIf="!password.valid && !isLoginMode">
+                <p class="is-size-7 ml-3">Must be at least 6 characters</p>
+              </div>
+            </div>
+
+            <button type="submit" class="button is-primary m-3" [disabled]="!authForm.valid">
+              {{ isLoginMode ? 'Login' : 'Sign Up'}}
+            </button>
+            <button class="button is-light m-3" (click)="onSwitchMode()"> {{ isLoginMode ? 'Sign Up' : 'Login'
+              }}</button>
+          </form>
+        </div>
+
+        <div class="column m-3">
+          <button type="button" (click)="authService.GoogleAuth()">
+            {{ isLoginMode ? 'Login' : 'Sign up' }} with Google
+          </button>
+        </div>
+        <div class="column m-3">
+          <button>Login</button>
         </div>
       </div>
     </div>
   </div>
-</section>
+
+</body>

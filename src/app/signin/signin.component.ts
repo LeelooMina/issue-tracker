@@ -9,8 +9,10 @@ import { AuthService } from '../shared/auth/auth.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SignInComponent implements OnInit {
-  isLoginMode = true;
-  isLoading = false;
+  isLoginMode: boolean = true;
+  isLoading: boolean = false;
+  placeHolderEmail: string = this.isLoginMode ? "Your email address" : "you@test.com"
+  placeHolderPass: string = 'Make it a good one'
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
