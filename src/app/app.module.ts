@@ -21,13 +21,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { SignInComponent } from './signin/signin.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './shared/auth/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AddEditProjectsComponent } from './projects/add-edit-projects/add-edit-projects.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ToDoListComponent } from './to-do-list/to-do-list.component';
 
 
 
@@ -50,7 +51,8 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     SignInComponent,
     AddEditProjectsComponent,
     FooterComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ToDoListComponent
 
   ],
   imports: [
