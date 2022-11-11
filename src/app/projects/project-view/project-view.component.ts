@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IssueService } from 'src/app/shared/issue.service';
+import { Issue } from 'src/app/shared/issue.model';
 
 @Component({
   selector: 'app-project-view',
@@ -8,15 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjectViewComponent implements OnInit {
 
-  ID;
+  ID: string;
 
-  constructor(private route: ActivatedRoute) { }
+  issueList: Issue[] = [];
+
+  constructor(private route: ActivatedRoute, private issueService: IssueService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.ID = params['id'];
   })
-
+  this.issueList = this.issueService.getIssues()
 }
 
 }
