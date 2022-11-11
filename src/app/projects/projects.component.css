@@ -1,0 +1,12 @@
+.is-fullheight{
+  min-height: 91vh;
+  width: 100vh;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+  .is-fullheight{
+    min-height: 87vh
+  }
+
+}

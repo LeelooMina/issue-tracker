@@ -1,47 +1,46 @@
-<section class="hero is-primary is-fullheight ">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-10-tablet is-10-desktop">
-            <div class="box is-light">
-
-<section class="section is-centered ">
-  <div class="container">
+<body class="has-background-primary">
+  <div class="container is-fullheight">
     <div class="columns is-centered">
-      <div class="column">
-  <h1 class="title has-text-black">{{user}}'s Project List</h1>
-  <p class="subtitle has-text-black">
-    Click on a project to see the current issues.
-  </p>
-  </div>
-  </div>
-  </div>
-</section>
-<input [(ngModel)]="user"><button (click)="onClickSearch()">Filter</button>
+      <div class="column is-10-tablet is-10-desktop">
+        <div class="box is-light">
+
+          <section class="section is-centered ">
+            <div class="container">
+              <div class="columns is-centered">
+                <div class="column">
+                  <h1 class="title has-text-black">{{user}}'s Project List</h1>
+                  <p class="subtitle has-text-black">
+                    Click on a project to see the current issues.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <input [(ngModel)]="user"><button (click)="onClickSearch()">Filter</button>
 
 
-<div *ngFor="let project of projectList">
-<div class="columns is-centered m-1">
-    <div class="column container is-max-desktop">
-      <header class="card-header has-background-primary">
-        <p class="card-header-title is-primary">
-         <a [routerLink]="['/project-view', project.ID]">{{ project.name }}</a>
-         <div class="is-right px-2 py-2">
-          <button class="delete is-large" (click)="onDelete(project)"></button>
-         </div>
-      </header>
+          <div *ngFor="let project of projectList">
+            <div class="columns is-centered m-1">
+              <div class="column container is-max-desktop">
+                <header class="card-header has-background-primary">
+                  <p class="card-header-title is-primary">
+                    <a [routerLink]="['/project-view', project.ID]">{{ project.name }}</a>
+                  <div class="is-right px-2 py-2">
+                    <button class="delete is-large" (click)="onDelete(project)"></button>
+                  </div>
+                </header>
 
-      <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <p>{{ project.description }}</p>
-            <p>Allowed: {{ project.allowedUsers }}</p>
-            <p>ID: {{ project.ID }}</p>
+                <div class="card">
+                  <div class="card-content">
+                    <div class="content">
+                      <p>{{ project.description }}</p>
+                      <p>Allowed: {{ project.allowedUsers }}</p>
+                      <p>ID: {{ project.ID }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  </div></div>
-
-
