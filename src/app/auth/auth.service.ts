@@ -23,6 +23,8 @@ interface GoogleAuthResponseData {
 export class AuthService {
   constructor(public afireAuth: AngularFireAuth, private http: HttpClient) {}
 
+  isLoggedin = false;
+
   signUp(email: string, password: string) {
     return this.http.post<AuthResponseData>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAIMaCTohp56bC1GV0lKRd2ek7ot9VBZbI',
