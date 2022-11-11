@@ -10,7 +10,7 @@ import {
 } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { Project } from './project.model';
 
 
