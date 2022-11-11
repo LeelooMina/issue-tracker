@@ -81,6 +81,9 @@ export class IssueService {
     }
   }
 
+  getSingleIssue(issueID){
+    
+  }
 
   onFetchIssues(projectID){
 
