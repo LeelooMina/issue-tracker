@@ -10,7 +10,12 @@
       <div class="columns is-centered">
         <div class="column is-10-tablet is-10-desktop">
             <div class="box is-light">
-<p> Project ID: {{ID}}</p>
+              <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                  <li><a routerLink="/projects"  routerLinkActive="active">Project List</a></li>
+                  <li><a class="is-active">{{projectName}}</a></li>
+                </ul>
+              </nav>
 <section class="section is-centered ">
   <button class="button is-primary" [routerLink]="['/add-issue', ID]">Add An Issue</button>
   <div class="container">
