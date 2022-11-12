@@ -5,12 +5,42 @@
     <div class="columns is-centered">
 
       <div class="column">
-        <div class="box is-light m-5 p-5">
-          <h1><strong>{{ isLoginMode ? 'Welcome back!' :'Get started today!' }}</strong></h1>
+        <div class="show-mobile">
+          <div class="box is-light" id="greeting">
+            <strong>{{isLoginMode ? 'Welcome back!' : 'Get started today!'}}</strong>
+          </div>
+        </div>
+        <div class="hide-mobile">
+        <div class="box is-light mt-5 mx-3" id="greeting">
+          <div *ngIf="isLoginMode; else signUpText">
+            <h1><strong>Welcome back!</strong></h1>
+            <div class="hide-mobile"><p>Some tips for planning your projects:</p>
+            <ul>
+              <li>Tip 1</li>
+              <li>Tip 2</li>
+            </ul>
+            <p class="m-3">Thanks for being a part of the ProjectBox community.</p>
+            </div>
+
+          </div>
+          <ng-template #signUpText>
+            <p class="m-5"></p>
+            <h1 class="m-5"><strong>Get started today!</strong></h1>
+            <div class="hide-mobile"><ul class="m-5">
+              <li>Collaborate with coworkers and friends</li>
+              <li>Keep your probjects all in one place</li>
+              <li>Track issues that arrise during devlopment</li>
+              <li>Prevent redundancy by assigning tasks</li>
+              <li>Plan out new features</li>
+            </ul></div>
+          </ng-template>
+          </div>
+
         </div>
       </div>
+
       <div class="column">
-        <div class="box is-light m-5 p-2">
+        <div class="box is-light" id="form">
           <div *ngIf="isLoading">
             <app-loading-spinner></app-loading-spinner>
           </div>

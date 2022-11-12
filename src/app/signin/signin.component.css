@@ -4,9 +4,51 @@
 }
 
 
+.show-mobile{
+  display: none;
+}
+
+
+#greeting{
+  height: 70%;
+}
+
+#form{
+  height: 70%;
+}
+
+li {
+
+  margin-left: 20px;
+  margin-top: 10px;
+  list-style-type: square;
+}
+
+
+
 @media only screen and (max-device-width: 480px) {
   .is-fullheight{
-    height: 87vh
+    height: 88vh;
+    width: 85vw;
+  }
+  #greeting{
+    height: 10vh;
+    width: 75vw;
+    margin-top: 1vh;
   }
 
+  #form{
+    height: 45vh;
+    width: 75vw;
+    margin-top: 0;
+  }
+
+
+  .hide-mobile{
+    display: none;
+  }
+
+  .show-mobile{
+    display: inline;
+  }
 }
