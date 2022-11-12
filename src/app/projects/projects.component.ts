@@ -29,13 +29,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.projectList = this.projectService.getProjects();
 
     this.projectService.onFetchProjects(this.user).subscribe((payload) => {
       this.projectList = payload;
     });
 
-    // Subscribe to that subject here
     this.projectService.projectSubject.subscribe((projects) => {
       this.projectList = projects;
     });
