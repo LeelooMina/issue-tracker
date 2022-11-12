@@ -34,14 +34,18 @@ export class ProjectsComponent implements OnInit {
       this.projectList = payload;
     });
 
-    this.projectService.projectSubject.subscribe((projects) => {
-      this.projectList = projects;
+    this.projectService.projectSubject.subscribe((project) => {
+      this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+        this.projectList = payload;
     });
+  })
+  }
+  
   }
 
-  onClickSearch() {
-    this.projectService.onFetchProjects(this.user).subscribe((payload) => {
-      this.projectList = payload;
-    });
-  }
-}
+  // onClickSearch() {
+  //   this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+  //     this.projectList = payload;
+  //   });
+  // }
+
