@@ -78,7 +78,19 @@ projectSubject = new Subject<Project[]>();
     }
   }
 
-  getSingleProject(projectID) {}
+  getProjectDesc(projectID) {
+    this.http
+      .get(
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}.json`
+      )
+      .pipe(
+        map((respData) => {
+          return respData
+        })
+      );
+      return null;
+
+  }
 
   // private fetchProjects(){
   //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
