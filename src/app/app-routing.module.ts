@@ -33,7 +33,7 @@ const routes: Routes = [
     component: AddEditProjectsComponent
   },
   {
-    path: 'project-view/:id',
+    path: 'project-view/:id/:name',
     component: ProjectViewComponent
   },
   {
