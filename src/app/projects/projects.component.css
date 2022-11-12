@@ -1,12 +1,41 @@
+
+
 .is-fullheight{
-  min-height: 91vh;
-  width: 100vh;
+  min-height: 91vh
 }
 
+.box{
+  margin: 0vh;
+}
 
-@media only screen and (max-device-width: 480px) {
+li {
+
+  margin-left: 20px;
+  margin-top: 10px;
+  list-style-type: square;
+}
+
+@media only screen and (max-device-width: 700px) {
   .is-fullheight{
-    min-height: 87vh
+    min-height: 87vh;
+    width: 100vw;
+    margin-right: 0px;
   }
 
+  .box-title{
+    width:90vw;
+    margin: 0vh;
+  }
+
+  #contain{
+    width: 100%;
+    margin: 0%;
+  }
+
+  .is-centered{
+    margin-left: 0vw;
+    margin-right: 1vw;
+    margin-top: 0vh;
+    padding: 0vw;
+  }
 }

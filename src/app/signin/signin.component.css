@@ -10,11 +10,11 @@
 
 
 #greeting{
-  height: 70%;
+  height: 45vh;
 }
 
 #form{
-  height: 70%;
+  height: 45vh;
 }
 
 li {
@@ -26,21 +26,34 @@ li {
 
 
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 775px) {
   .is-fullheight{
     height: 88vh;
-    width: 85vw;
+    width: 100vw;
+  }
+
+  .container{
+    margin: 0vh;
+    margin: 0vw;
+    width: 100vw;
+    height: 80vh;
   }
   #greeting{
     height: 10vh;
     width: 75vw;
-    margin-top: 1vh;
+    margin: 0vh;
+    margin: 0vw;
   }
 
-  #form{
-    height: 45vh;
+  .columns,.is-centered, .container, .column{
+    margin: 0vw;
+  }
+
+  .box{
+    height: 75vh;
     width: 75vw;
-    margin-top: 0;
+    margin: 0vh;
+    margin: 0vw;
   }
 
 
@@ -50,5 +63,7 @@ li {
 
   .show-mobile{
     display: inline;
+    margin: auto;
+    margin-bottom: 1vh;
   }
 }

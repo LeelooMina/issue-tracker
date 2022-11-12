@@ -5,45 +5,38 @@
     <div class="columns is-centered">
 
       <div class="column">
-        <div class="show-mobile">
-          <div class="box is-light" id="greeting">
-            <strong>{{isLoginMode ? 'Welcome back!' : 'Get started today!'}}</strong>
-          </div>
-        </div>
+
+
         <div class="hide-mobile">
         <div class="box is-light mt-5 mx-3" id="greeting">
           <div *ngIf="isLoginMode; else signUpText">
-            <h1><strong>Welcome back!</strong></h1>
-            <div class="hide-mobile"><p>Some tips for planning your projects:</p>
-            <ul>
-              <li>Tip 1</li>
-              <li>Tip 2</li>
-            </ul>
-            <p class="m-3">Thanks for being a part of the ProjectBox community.</p>
-            </div>
+            <h1 class="title has-text-black pb-1"><strong>Welcome back!</strong></h1>
 
           </div>
           <ng-template #signUpText>
-            <p class="m-5"></p>
-            <h1 class="m-5"><strong>Get started today!</strong></h1>
-            <div class="hide-mobile"><ul class="m-5">
+
+            <h1 class="title has-text-black mb-6"><strong>Get started today!</strong></h1>
+          </ng-template>
+            <div class="hide-mobile subtitle has-text-black"><ul class="m-5">
               <li>Collaborate with coworkers and friends</li>
               <li>Keep your probjects all in one place</li>
               <li>Track issues that arrise during devlopment</li>
               <li>Prevent redundancy by assigning tasks</li>
               <li>Plan out new features</li>
             </ul></div>
-          </ng-template>
           </div>
 
         </div>
       </div>
 
       <div class="column">
-        <div class="box is-light" id="form">
+        <div class="box is-light  mt-5 mx-3" id="form">
           <div *ngIf="isLoading">
             <app-loading-spinner></app-loading-spinner>
           </div>
+          <div class="show-mobile">
+              <strong>{{isLoginMode ? 'Welcome back!' : 'Get started!'}}</strong>
+            </div>
           <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
             <label class="label m-2">Email:</label>
 
@@ -70,19 +63,18 @@
             </button>
             <button class="button is-light m-3" (click)="onSwitchMode()"> {{ isLoginMode ? 'Sign Up' : 'Login'
               }}</button>
+              <img src=".\assets\btn_google_signin_light_normal_web.png" (click)="authService.GoogleAuth()">
+
           </form>
+
         </div>
 
-        <div class="column m-3">
-          <button type="button" (click)="authService.GoogleAuth()">
-            {{ isLoginMode ? 'Login' : 'Sign up' }} with Google
-          </button>
+
         </div>
-        <div class="column m-3">
-          <button>Login</button>
+
         </div>
       </div>
-    </div>
-  </div>
+
+
 
 </body>
