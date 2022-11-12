@@ -1,7 +1,7 @@
 <body class="has-background-primary">
-  <div class="container is-fullheight">
+  <div class="container is-fullheight mt-1 is-centered">
     <div class="columns is-centered">
-      <div class="column is-10-tablet is-10-desktop">
+      <div class="column">
         <div class="box is-light">
 
           <section class="section is-centered ">
@@ -24,7 +24,7 @@
               <div class="column container is-max-desktop">
                 <header class="card-header has-background-primary">
                   <p class="card-header-title is-primary">
-                    <a [routerLink]="['/project-view', project.ID]">{{ project.name }}</a>
+                    <a [routerLink]="['/project-view', project.ID,  project.name]">{{ project.name }}</a>
                   <div class="is-right px-2 py-2">
                     <button class="delete is-large" (click)="onDelete(project)"></button>
                   </div>
