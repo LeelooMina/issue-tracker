@@ -3,6 +3,6 @@ export interface Issue{
   description: string,
   user: string,
   type: string,
-  projectID: number
+  projectID: string
   ID: number;
 }
