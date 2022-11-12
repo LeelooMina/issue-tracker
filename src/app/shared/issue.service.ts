@@ -47,11 +47,11 @@ export class IssueService {
     return this.issues.slice();
   }
 
-  postIssues(project: Project){
+  postIssues(issue: Issue, projectID){
 
     this.http.post(
-        'https://it-db-ad530-default-rtdb.firebaseio.com/issues/${projectID}.json',
-        project,
+        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${projectID}.json`,
+        issue,
         {
           observe: 'response'
         }
@@ -82,7 +82,7 @@ export class IssueService {
   }
 
   getSingleIssue(issueID){
-    
+
   }
 
   onFetchIssues(projectID){
