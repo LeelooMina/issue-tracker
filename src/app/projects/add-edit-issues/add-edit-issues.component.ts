@@ -20,11 +20,15 @@ export class AddEditIssuesComponent implements OnInit {
     console.log("email", this.authService.loggedInUser.email)
   let issue: Issue  = {
     title: addProject.value.projectName,
-  description: addProject.value.projectDes,
-  user: this.authService.loggedInUser.email,
-  type: addProject.value.allowedUsers,
-  projectID: this.ID,
-  ID: 0 }
+    description: addProject.value.projectDes,
+    createdBy: this.authService.loggedInUser.email,
+    type: addProject.value.allowedUsers,
+    projectID: this.ID,
+    ID: 0,
+    claimedBy: '',
+    claimed: false,
+    done: false
+  }
 
   this.issueService.postIssues(issue, this.ID);
   this.router.navigate(['/projects'])
