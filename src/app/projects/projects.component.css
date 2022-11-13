@@ -1,17 +1,16 @@
 .card-header{
   border-radius: 10px 10px 0px 0px;
-  width: 20vw;
 }
 
 .card{
-  height: 20vh;
-  width: 20vw;
+
   border-radius: 0px 0px 10px 10px
 }
 
 
 .is-fullheight{
-  min-height: 91vh
+  min-height: 91vh;
+  width: 100vw;
 }
 
 .cards{
@@ -28,9 +27,7 @@
   margin-right:auto;
 }
 
-.card-footer{
-  position: absolute;
-}
+
 
 li {
 
@@ -38,6 +35,15 @@ li {
   margin-top: 10px;
   list-style-type: square;
 }
+
+.projectTitle:hover{
+  background-color:gray;
+}
+
+a:link, a:visited {
+  color: black;
+}
+
 
 @media only screen and (max-device-width: 850px) {
   .is-fullheight{

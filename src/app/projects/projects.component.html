@@ -1,5 +1,5 @@
 <body class="has-background-primary">
-  <div class="container is-fullheight is-centered">
+  <div class="container is-fullheight is-centered is-fullwidth">
     <div class="columns is-centered mt-3">
       <div class="column">
         <div class="box is-light box-title">
@@ -12,17 +12,52 @@
       </div>
     </div>
 
+
+
+
     <!-- <input [(ngModel)]="user"><button (click)="onClickSearch()">Filter</button> -->
 
 
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-vcentered">
+        <div  style="overflow:x-auto;">
+        <div class="box m-3">
+          <table class="table is-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>description</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr class="m-5" *ngFor="let project of projectList; let i = index">
+                <td class="projectTitle mt-5">
+                  <a [routerLink]="['/project-view', project.ID,  project.name]" class="m-5 projectTitle">{{ project.name }}</a></td>
+                <td>{{ project.description }}</td>
+
+
+              </tr>
+
+
+
+
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+      </div> -->
+
     <div class="box">
-      <div class="columns is-multiline cards">
-        <div *ngFor="let project of projectList, let i = index">
-          <div class="m-2">
-            <header class="card-header has-background-primary round">
+
       <div *ngFor="let project of projectList">
-        <div class="columns is-centered">
-          <div class="column is-vcentered">
+          <div class="columns">
+
+          <div class="column">
             <header class="card-header has-background-primary">
               <p class="card-header-title is-primary">
                 <a [routerLink]="['/project-view', project.ID,  project.name]">{{ project.name }}</a>
@@ -31,29 +66,26 @@
               </div>
             </header>
 
-            <div class="card round">
-              <div class="card-content">
-                <div class="content">
-                  <p>{{ project.description }}</p>
+          
+
+              <div class="card">
+                <div class="card-content">
+                  <div class="content">
+                    <p>{{ project.description }}</p>
+                    <p>Allowed: {{ project.allowedUsers }}</p>
+                    <p>ID: {{ project.ID }}</p>
+                  </div>
                 </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item">Save</a>
+                  <a href="#" class="card-footer-item">Edit</a>
+                  <a href="#" class="card-footer-item">Delete</a>
+                </footer>
               </div>
 
-            <div class="card">
-              <div class="card-content">
-                <div class="content">
-                  <p>{{ project.description }}</p>
-                  <p>Allowed: {{ project.allowedUsers }}</p>
-                  <p>ID: {{ project.ID }}</p>
-                </div>
-              </div>
-              <footer class="card-footer">
-                <a href="#" class="card-footer-item">Save</a>
-                <a href="#" class="card-footer-item">Edit</a>
-                <a href="#" class="card-footer-item">Delete</a>
-              </footer>
             </div>
 
           </div>
         </div>
+
       </div>
-    </div>
