@@ -20,6 +20,10 @@
         <div *ngFor="let project of projectList, let i = index">
           <div class="m-2">
             <header class="card-header has-background-primary round">
+      <div *ngFor="let project of projectList">
+        <div class="columns is-centered">
+          <div class="column is-vcentered">
+            <header class="card-header has-background-primary">
               <p class="card-header-title is-primary">
                 <a [routerLink]="['/project-view', project.ID,  project.name]">{{ project.name }}</a>
               <div class="is-right px-2 py-2">
@@ -34,6 +38,19 @@
                 </div>
               </div>
 
+            <div class="card">
+              <div class="card-content">
+                <div class="content">
+                  <p>{{ project.description }}</p>
+                  <p>Allowed: {{ project.allowedUsers }}</p>
+                  <p>ID: {{ project.ID }}</p>
+                </div>
+              </div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item">Save</a>
+                <a href="#" class="card-footer-item">Edit</a>
+                <a href="#" class="card-footer-item">Delete</a>
+              </footer>
             </div>
 
           </div>
@@ -41,3 +58,4 @@
       </div>
     </div>
 
+  </div>
