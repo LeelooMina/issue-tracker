@@ -13,31 +13,17 @@
   width: 100vw;
 }
 
-.cards{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left:auto;
-  margin-right:auto;
-}
 
 .box{
-  margin: 0vh;
+
   margin-left:auto;
   margin-right:auto;
 }
 
-
-
-li {
-
-  margin-left: 20px;
-  margin-top: 10px;
-  list-style-type: square;
-}
 
 .projectTitle:hover{
   background-color:gray;
+  border-radius: 10px 10px 0px 0px;
 }
 
 a:link, a:visited {
@@ -45,61 +31,6 @@ a:link, a:visited {
 }
 
 
-@media only screen and (max-device-width: 850px) {
-  .is-fullheight{
-    min-height: 87vh;
-    width: 100vw;
-    margin-right: 0px;
-  }
-
-  .box-title{
-
-    margin-left:auto;
-    margin-right:auto;
 
 
-  }
 
-  .title{
-    font-size: medium;
-  }
-
- .subtitle{
-  font-size: small;
-  text-align: left;
-
- }
-
-  #contain{
-    width: 100%;
-    margin: 0%;
-  }
-
-  .is-centered{
-    margin-left: 0vw;
-    margin-right: 1vw;
-    margin-top: 0vh;
-    padding: 0vw;
-  }
-
-  .cards{
-    display: inline;
-  }
-  .card-header{
-    border-radius: 10px 10px 0px 0px;
-    width: 70vw;
-    margin-left:auto;
-    margin-right:auto;
-
-  }
-
-  .card{
-    height: 20vh;
-    width: 70vw;
-    border-radius: 0px 0px 10px 10px;
-    margin-left: auto;
-    margin-right:auto;
-
-  }
-
-}
