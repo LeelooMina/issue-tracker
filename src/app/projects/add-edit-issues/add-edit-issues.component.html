@@ -1,30 +1,47 @@
-
 <section class="hero is-primary is-fullheight">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-10-tablet is-10-desktop">
-            <div class="box is-light">
-<div class="field">
-  <h1 class="title has-text-black">
-    <p>Add or Edit Issue</p>
-  </h1>
+          <div class="box is-light">
+            <div class="field">
+              <h1 class="title has-text-black">
+                <p>Add or Edit Issue</p>
+              </h1>
 
-  <form (ngSubmit)="onSubmit(addProject)" #addProject="ngForm">
-    <div class="field">
-      <label class="label">Project Name:</label>
-      <div class="control">
-        <input name="projectName" class="input" ngModel required>
+              <form (ngSubmit)="onSubmit(addIssue)" #addIssue="ngForm">
+                <label class="label">Category:</label>
+
+
+                <div  class="select  mb-3">
+                <select name="type">
+                  <option value="Bug">Bug</option>
+                  <option value="Feature Request">Feature</option>
+                  <option value="Other Task">Other Task</option>
+                </select>
+                </div>
+
+                <label class="label">Title</label>
+
+                <input name="title" class="input" ngModel required>
+
+
+
+                <label class="label">Description:</label>
+                <textarea name="description" class="textarea" ngModel></textarea>
+
+
+
+
+
+
+                <button type="submit" class="button is-primary mt-3">Add Project</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <label class="label">Description:</label>
-    <textarea name="projectDes" class="textarea" ngModel></textarea>
-
-    <label class="label">Allowed Users:</label>
-    <textarea name="allowedUsers" class="textarea" ngModel></textarea>
-
-
-    <button type="submit" class="button is-primary">Add Project</button>
-  </form>
-</div></div></div></div></div></div></section>
+  </div>
+</section>
