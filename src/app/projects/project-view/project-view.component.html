@@ -1,47 +1,83 @@
 <body class="has-background-primary">
-  <div class="container is-fullheight is-centered">
-    <div class="columns is-centered">
-      <div class="column">
-        <div class="box is-light box-title">
-          <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-              <li><a routerLink="/projects" routerLinkActive="active">Project List</a></li>
-              <li><a class="is-active"> {{projectName}}</a></li>
-            </ul>
-          </nav>
-          <div class="column has-text-right">
-            <button class="button is-primary" [routerLink]="['/add-issue', ID]">Add A New Issue</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
-      <!-- <input [(ngModel)]="user"><button (click)="onClickSearch()">Filter</button> -->
+</body>
+<!-- <div class="columns is-centered">
+                <div class="column is-vcentered">
+                  <header class="card-header has-background-primary">
+                    <p class="card-header-title is-primary">
+                      <a [routerLink]="['/issue-details', issue.ID]">{{ issue.title }}</a>
+                      <div class="is-right px-2 py-2">
+                        <button class="delete is-large" (click)="onDelete(issue)"></button>
+                      </div>
+                    </header>
 
-      <div class="box">
-        <div *ngFor="let issue of issueList">
-          <div class="columns is-centered">
-            <div class="column is-vcentered">
-              <header class="card-header has-background-primary">
-                <p class="card-header-title is-primary">
-                  <a [routerLink]="['/issue-details', issue.ID]">{{ issue.title }}</a>
-                <div class="is-right px-2 py-2">
-                  <button class="delete is-large" (click)="onDelete(issue)"></button>
-                </div>
-              </header>
-
-              <div class="card">
-                <div class="card-content">
-                  <div class="content">
-                    <p>{{ issue.description }}</p>
-                    <p>Posted By: {{ issue.user}}</p>
-                    <p>ID: {{ issue.ID }}</p>
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="content">
+                          <p>{{ issue.description }}</p>
+                          <p>Posted By: {{ issue.user}}</p>
+                          <p>ID: {{ issue.ID }}</p>
+                        </div>
+                        <button>Claim Issue</button>
+                      </div>
+                    </div>
                   </div>
-                  <button>Claim Issue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                </div> -->
+
+
+                <body class="has-background-primary">
+                  <div class="container is-fullheight is-centered is-fullwidth">
+                    <div class="columns is-centered mt-3">
+                      <div class="column">
+                        <div class="box is-light box-title">
+
+                          <nav class="breadcrumb" aria-label="breadcrumbs">
+                            <ul>
+                              <li><a routerLink="/projects" routerLinkActive="active">Project List</a></li>
+                              <li><a class="is-active"> {{projectName}}</a></li>
+                              <div class="has-text-right">
+                              </div>
+                            </ul>
+                            <h1 class="title has-text-black">{{projectName}} </h1>
+                            <p class="subtitle has-text-black">
+                              Claim an issue.
+                            </p>
+                          </nav>
+                          <div class="has-text-right px-1 py-1">
+                          <button class="button is-primary" [routerLink]="['/add-issue', ID]">Submit New Issue</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="box mb-3">
+
+                      <table class="table is-striped" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Description</th>
+                            <th>Claimed</th>
+                            <th>Posted By</th>
+                            <th>Type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr *ngFor="let issue of issueList; let i = index">
+                            <td><p><strong>{{issue.title}}</strong></p><p>{{ issue.description }}</p></td>
+                            <td>
+                              <div *ngIf="issue.claimedBy === 'false'; else ifClaimed"><button class="button is-primary is-small">Claim</button></div>
+                            <ng-template #ifClaimed><button [disabled]="" class="button is-light is-small">{{issue.claimedBy}}</button></ng-template></td>
+                            <td>{{ issue.createdBy }}</td>
+                            <td>{{ issue.type }}</td>
+                          </tr>
+
+
+
+                        </tbody>
+                      </table>
+
+                    </div>

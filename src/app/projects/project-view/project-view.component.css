@@ -1,0 +1,19 @@
+/* tr:nth-child(even) {
+  background-color: #f2f2f2;
+} */
+
+
+.a:hover{
+  background-color:red;
+}
+
+.is-fullheight{
+  min-height: 91vh;
+  width: 100vw;
+}
+
+.box{
+  margin: 0vh;
+  margin-left:auto;
+  margin-right:auto;
+}
