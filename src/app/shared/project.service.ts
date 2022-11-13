@@ -49,20 +49,6 @@ projectSubject = new Subject<Project[]>();
       });
   }
 
-  // private fetchProjects() {
-  //   this.http
-  //     .get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json')
-  //     .pipe(
-  //       map((respData) => {
-  //         let projectArr = [];
-  //         for (let key in respData) {
-  //           projectArr.push({ ...respData[key], ID: key });
-  //         }
-  //         return projectArr;
-  //       })
-  //     )
-  //     .subscribe((project) => {});
-  // }
 
   deleteProject(project: Project) {
     let alertResp = confirm(`Do you really want to delete ${project.name}?`);
