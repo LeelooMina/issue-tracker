@@ -9,12 +9,12 @@
 }
 
 
-#greeting{
-  height: 45vh;
-}
 
-#form{
-  height: 45vh;
+
+.container{
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 li {
@@ -50,20 +50,20 @@ li {
   }
 
   .box{
-    height: 75vh;
+    height: 60vh;
     width: 75vw;
     margin: 0vh;
     margin: 0vw;
   }
 
 
-  .hide-mobile{
+ .hide-mobile{
     display: none;
   }
 
   .show-mobile{
     display: inline;
-    margin: auto;
-    margin-bottom: 1vh;
+
   }
 }
+

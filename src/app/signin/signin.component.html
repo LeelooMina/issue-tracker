@@ -2,12 +2,12 @@
 
   <div class="container has-background-primary is-fullheight">
 
-    <div class="columns is-centered">
+    <div class="columns">
 
+      <div class="hide-mobile">
       <div class="column">
 
 
-        <div class="hide-mobile">
         <div class="box is-light mt-5 mx-3" id="greeting">
           <div *ngIf="isLoginMode; else signUpText">
             <h1 class="title has-text-black pb-1"><strong>Welcome back!</strong></h1>
