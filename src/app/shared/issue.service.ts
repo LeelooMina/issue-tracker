@@ -50,6 +50,72 @@ export class IssueService {
     ID: 3,
     claimed: false,
     done: false
+  },
+  {
+    title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "none",
+    type: "Bug",
+    projectID: '1',
+    ID: 1,
+    claimed: false,
+    done: false
+  },
+  {
+    title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "none",
+    type: "Feature Request",
+    projectID: '1',
+    ID: 2,
+    claimed: false,
+    done: false
+  },
+  {
+  title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "none",
+    type: "Future Feature",
+    projectID: '1',
+    ID: 3,
+    claimed: false,
+    done: false
+  },
+  {
+    title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "false",
+    type: "Bug",
+    projectID: '1',
+    ID: 1,
+    claimed: false,
+    done: false
+  },
+  {
+    title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "none",
+    type: "Feature Request",
+    projectID: '1',
+    ID: 2,
+    claimed: false,
+    done: false
+  },
+  {
+  title: "Title",
+    description: "describe issues",
+    createdBy: "username / ID",
+    claimedBy: "false",
+    type: "Future Feature",
+    projectID: '1',
+    ID: 3,
+    claimed: false,
+    done: false
   }]
 
   getIssues(){
