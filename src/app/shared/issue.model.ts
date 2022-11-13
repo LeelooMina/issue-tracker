@@ -3,10 +3,10 @@ export interface Issue{
   description: string,
   createdBy: string,
   claimedBy: string, //UserID or string "none"
-  type: string, //Idea, Feature, Bug,
+  type: string, //Feature Request, Bug, Other Task
   projectID: string,
   ID: number, //Issue ID
-  claimed: boolean; 
+  claimed: boolean;
   done: boolean;
 
 }
