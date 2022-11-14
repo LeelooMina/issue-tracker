@@ -1,0 +1,24 @@
+.is-fullheight{
+  min-height: 91vh;
+  width: 100vh;
+}
+
+
+.show-mobile{
+  display: none;
+}
+
+
+
+
+
+
+li {
+
+  margin-left: 20px;
+  margin-top: 10px;
+  list-style-type: square;
+}
+
+
+
