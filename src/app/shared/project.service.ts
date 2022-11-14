@@ -34,7 +34,7 @@ projectSubject = new Subject<Project[]>();
   }
 
   postProjects(project: Project) {
-    this.http
+    return this.http
       .post(
         'https://it-db-ad530-default-rtdb.firebaseio.com/projects.json',
         project,
@@ -109,8 +109,8 @@ projectSubject = new Subject<Project[]>();
         map((respData) => {
           let projectArr = [];
           for (let key in respData) {
-            projectArr.push({ ...respData[key], ID: key });
-          }
+            if(respData.hasOwnProperty(key)){projectArr.push({ ...respData[key], ID: key });
+          }}
           console.log(projectArr);
           return projectArr;
         })
