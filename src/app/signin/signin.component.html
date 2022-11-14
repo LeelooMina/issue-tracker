@@ -38,6 +38,7 @@
               <strong>{{isLoginMode ? 'Welcome back!' : 'Get started!'}}</strong>
             </div>
           <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
+            <div class="notification is-danger" *ngIf="error">{{error}}</div>
             <label class="label m-2">Email:</label>
 
             <div class="control">
@@ -51,7 +52,7 @@
             <label class="label m-2">Password:</label>
 
             <div class="control">
-              <input class="input is-rounded m-1" type="password" placeholder="Make it a good one" #password="ngModel"
+              <input class="input is-rounded m-1" type="password" placeholder="{{placeHolderPass}}" #password="ngModel"
                 ngModel name="password" required password minlength="6" />
               <div *ngIf="!password.valid && !isLoginMode">
                 <p class="is-size-7 ml-3">Must be at least 6 characters</p>

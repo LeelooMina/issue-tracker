@@ -13,11 +13,12 @@ export class SignInComponent implements OnInit {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   placeHolderEmail: string = this.isLoginMode ? "Your email address" : "you@test.com"
-  placeHolderPass: string = 'Make it a good one'
-  error: string = '';
+  placeHolderPass: string;
+  error = null;
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+    this.isLoginMode ? this.placeHolderPass = "That's the combo on my luggage!" : this.placeHolderPass = 'Make it a good one!';
   }
 
   onSubmitAuth(authForm: NgForm) {
@@ -40,7 +41,6 @@ export class SignInComponent implements OnInit {
       switch (errorRes.error.error.message){
         case 'EMAIL_EXISTS':
          this.error ='This email already exists'
-         console.log(this.error)
       }
 
 
@@ -57,9 +57,11 @@ export class SignInComponent implements OnInit {
       console.log(params['id'])
       if(params['id'] === 'in'){
         this.isLoginMode = true;
+        this.placeHolderPass = "That's the combo on my luggage!"
       }
       else if(params['id'] === 'up'){
         this.isLoginMode = false;
+        this.placeHolderPass = "Make it a good one!"
       }
 
   })
