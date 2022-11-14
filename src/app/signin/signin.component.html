@@ -43,7 +43,7 @@
 
             <div class="control">
               <input class="input is-rounded m-1" type="email" #email="ngModel" ngModel name="email"
-                placeholder="you@test.com" required email />
+                placeholder="{{placeHolderEmail}}" required email />
             </div>
             <div *ngIf="!email.valid  && !isLoginMode">
               <p class="is-size-7 ml-3">Valid email required</p>

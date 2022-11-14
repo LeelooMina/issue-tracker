@@ -10,17 +10,26 @@ import { AuthService } from '../shared/auth/auth.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SignInComponent implements OnInit {
+
+  constructor(public authService: AuthService, private route: ActivatedRoute) {}
+
+
   isLoginMode: boolean = true;
   isLoading: boolean = false;
-  placeHolderEmail: string = this.isLoginMode ? "Your email address" : "you@test.com"
+  placeHolderEmail: string;
   placeHolderPass: string;
-  error = null;
+  error : string = null;
+
+  // Changes the mode of the signin/login form
+  // Switches placeholder text
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
-    this.isLoginMode ? this.placeHolderPass = "That's the combo on my luggage!" : this.placeHolderPass = 'Make it a good one!';
+    this.isLoginMode ? this.placeHolderPass = "That's the combo on my luggage!" : this.placeHolderPass = "Make it a good one!";
+    this.isLoginMode ? this.placeHolderEmail = "Your email address" : this.placeHolderEmail = "you@test.com";
   }
 
+  
   onSubmitAuth(authForm: NgForm) {
 
 
@@ -51,17 +60,19 @@ export class SignInComponent implements OnInit {
   }
 
 
-  constructor(public authService: AuthService, private route: ActivatedRoute) {}
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log(params['id'])
       if(params['id'] === 'in'){
         this.isLoginMode = true;
         this.placeHolderPass = "That's the combo on my luggage!"
+        this.placeHolderEmail = "Your email address"
       }
       else if(params['id'] === 'up'){
         this.isLoginMode = false;
         this.placeHolderPass = "Make it a good one!"
+        this.placeHolderEmail = "you@test.com"
       }
 
   })
