@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../shared/project.model';
 import { ProjectService } from '../shared/project.service';
 
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -13,6 +14,8 @@ export class ProjectsComponent implements OnInit {
 
   user = 'blankpage@gmail.com';
 
+
+
   loadProject(project) {
     console.log(project);
   }
@@ -22,7 +25,7 @@ export class ProjectsComponent implements OnInit {
       this.projectService.onFetchProjects(this.user).subscribe((payload) => {
         this.projectList = payload;
       });
-      console.log(responseData);
+      
     });
 
     alert(`${project.name} is now gone forever.`);
@@ -40,8 +43,11 @@ export class ProjectsComponent implements OnInit {
     });
   })
   }
-  
+
+
+
   }
+
 
   // onClickSearch() {
   //   this.projectService.onFetchProjects(this.user).subscribe((payload) => {
