@@ -7,6 +7,7 @@ import { auth } from 'firebaseui';
 import { catchError, Subject, tap } from 'rxjs';
 import { throwError } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
 
 export interface AuthResponseData {
   idToken: string;
@@ -23,7 +24,7 @@ interface GoogleAuthResponseData {}
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(public afireAuth: AngularFireAuth, private http: HttpClient) {}
+  constructor(public afireAuth: AngularFireAuth, private http: HttpClient, private router: Router) {}
 
   user = new Subject<User>();
 
@@ -123,9 +124,7 @@ export class AuthService {
     return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result);
-        console.log(this.loggedInUser);
-        console.log('You have been successfully logged in!');
+        this.router.navigate(['/projects'])
       })
       .catch((error) => {
         console.log(error);

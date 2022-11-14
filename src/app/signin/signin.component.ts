@@ -1,7 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthResponseData, AuthService } from '../shared/auth/auth.service';
 
@@ -11,7 +11,7 @@ import { AuthResponseData, AuthService } from '../shared/auth/auth.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SignInComponent implements OnInit {
-  constructor(public authService: AuthService, private route: ActivatedRoute) {}
+  constructor(public authService: AuthService, private route: ActivatedRoute, private router: Router) {}
 
   isLoginMode: boolean = true;
   isLoading: boolean = false;
@@ -54,6 +54,7 @@ export class SignInComponent implements OnInit {
         resData => {
           console.log(resData);
           this.isLoading = false;
+          this.router.navigate(['/projects'])
         },
         (errorMessage) => {
           console.log(errorMessage);
@@ -65,7 +66,7 @@ export class SignInComponent implements OnInit {
 
       authForm.reset();
 
-    }  
+    }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
