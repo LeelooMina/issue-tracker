@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +14,7 @@ export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   placeHolderEmail: string = this.isLoginMode ? "Your email address" : "you@test.com"
   placeHolderPass: string = 'Make it a good one'
+  error: string = '';
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -24,7 +26,7 @@ export class SignInComponent implements OnInit {
     if (!authForm.valid){
       this.isLoading = false;
       return;
-    }
+    }else {
 
     this.isLoading = true;
 
@@ -33,11 +35,19 @@ export class SignInComponent implements OnInit {
     this.authService.signUp(email, password).subscribe(resData => {
       console.log(resData)
       this.isLoading = false;
-    }, error => {
-      console.log(error)
+    }, errorRes => {
+      console.log(errorRes);
+      switch (errorRes.error.error.message){
+        case 'EMAIL_EXISTS':
+         this.error ='This email already exists'
+         console.log(this.error)
+      }
+
+
       this.isLoading = false;
     })
     authForm.reset();
+  }
   }
 
 
