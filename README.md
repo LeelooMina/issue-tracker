@@ -1,7 +1,9 @@
-[Live Demo](https://issue-tracker-3d4b0.web.app/home)
+
 
 
 # Issue Tracker
+
+[Live Demo](https://issue-tracker-3d4b0.web.app/home)
 
 An app to track problems, track bugs, and plan future features during a devlopment project. 
 
