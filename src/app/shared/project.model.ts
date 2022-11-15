@@ -3,5 +3,5 @@ export interface Project{
   description: string,
   admin: string,
   allowedUsers: string[],
-  ID: number
+  ID: string
 }

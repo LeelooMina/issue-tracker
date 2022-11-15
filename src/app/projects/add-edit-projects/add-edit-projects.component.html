@@ -7,26 +7,26 @@
             <div class="box is-light">
 <div class="field">
   <h1 class="title has-text-black">
-    <p>Add or Edit Project</p>
-    <p>{{ID}}</p>
+    <p>{{addOrEdit}} Project</p>
+
   </h1>
 
   <form (ngSubmit)="onSubmit(addProject)" #addProject="ngForm">
     <div class="field">
       <label class="label">Project Name:</label>
       <div class="control">
-        <input name="projectName" class="input" ngModel required>
+        <input name="projectName" [(ngModel)]="projectName" class="input" ngModel required>
       </div>
     </div>
 
     <label class="label">Description:</label>
-    <textarea name="projectDes" class="textarea" ngModel></textarea>
+    <textarea name="projectDes" [(ngModel)]="projectDesc" class="textarea" ngModel></textarea>
 
-    <label class="label">Allowed Users:</label>
-    <textarea name="allowedUsers" class="textarea" ngModel></textarea>
+    <!-- <label class="label">Allowed Users:</label>
+    <textarea name="allowedUsers" class="textarea" ngModel></textarea> -->
 
 
-    <button type="submit" class="button is-primary">Add Project</button>
+    <button type="submit" class="button is-primary mt-3" [disabled]="!addProject.valid">Add Project</button>
   </form>
 </div></div></div></div></div></div></section>
 
