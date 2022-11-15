@@ -15,7 +15,7 @@ export interface AuthResponseData {
   refreshToken: string;
   expiresIn: string;
   localId: string;
-  registered?: boolean;
+  registered: boolean;
 }
 
 interface GoogleAuthResponseData {}
@@ -81,7 +81,9 @@ export class AuthService {
   }
 
   logout(){
-    this.user.next(null)
+    this.user.next(null);
+    this.router.navigate(['/sign/out'])
+
   }
 
   private handleAuth(
@@ -125,11 +127,26 @@ export class AuthService {
     return this.AuthLogin(new GoogleAuthProvider());
   }
 
-  // Auth logic to run auth providers
+  // Google User Model:
+
+// displayName, email, emailVerified, isAnonymous
+
+// metadata, phoneNumber, photoURL, providerData
+
+
+// providerId, refreshToken, tenantId, uid
+
+
   AuthLogin(provider) {
     return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
+        console.log('G', result.user)
+        const user = new User(
+          result.user.email,
+          result.user.uid,
+          result.user.refreshToken);
+          this.user.next(user);
         this.router.navigate(['/projects'])
       })
       .catch((error) => {
