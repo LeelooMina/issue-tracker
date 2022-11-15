@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Project } from 'src/app/shared/project.model';
 import { ProjectService } from 'src/app/shared/project.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-edit-projects',
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 
 export class AddEditProjectsComponent implements OnInit {
+
+  ID: string;
 
   onSubmit(addProject: NgForm){
     console.log("email", this.authService.loggedInUser.email)
@@ -30,9 +32,13 @@ export class AddEditProjectsComponent implements OnInit {
 }
 
 
-  constructor(private projectService: ProjectService, private authService: AuthService, public router: Router) { }
+  constructor(private projectService: ProjectService, private authService: AuthService, public router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      this.ID = params['id'];
+      })
   }
 
 }
