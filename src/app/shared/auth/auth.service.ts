@@ -141,7 +141,7 @@ export class AuthService {
     return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log('G', result.user)
+        
         const user = new User(
           result.user.email,
           result.user.uid,
