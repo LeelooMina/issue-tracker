@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: center;
     max-width: 80vw;
+
 }
 
 li {
@@ -29,6 +30,12 @@ li {
   list-style-type: square;
 }
 
+img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
 
 
 @media only screen and (max-device-width: 775px) {
@@ -36,7 +43,9 @@ li {
     height: 88vh;
     width: 100vw;
   }
-
+  .columns{
+    flex-direction: column;
+  }
   .container{
     margin: 0vh;
     margin: 0vw;
