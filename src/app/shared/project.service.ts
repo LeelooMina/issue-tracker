@@ -27,6 +27,7 @@ import { AuthService } from './auth/auth.service';
 })
 export class ProjectService {
   private projects: Project[] = [];
+
 projectSubject = new Subject<Project[]>();
   getProjects() {
     // this.fetchProjects();
@@ -45,7 +46,7 @@ projectSubject = new Subject<Project[]>();
       .subscribe((responseData) => {
         this.projects.push(project);
         this.projectSubject.next(this.getProjects())
-        console.log(responseData);
+
       });
   }
 
@@ -64,19 +65,32 @@ projectSubject = new Subject<Project[]>();
     }
   }
 
-  getProjectDesc(projectID) {
-    this.http
+  getProject(projectID) {
+    return this.http
       .get(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}.json`
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}.json`,
+      {
+        observe: 'response'
+      }
       )
-      .pipe(
-        map((respData) => {
-          return respData
-        })
-      );
-      return null;
 
   }
+
+
+  updateProject(project: Project) {
+
+      this.http.patch(
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${project.ID}/.json`, project,
+        {
+          observe: 'response',
+        }
+      ) .subscribe((responseData) => {
+        this.projectSubject.next(this.getProjects())
+        console.log(responseData)
+      });
+
+  }
+
 
   // private fetchProjects(){
   //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
@@ -103,7 +117,7 @@ projectSubject = new Subject<Project[]>();
   onFetchProjects(user) {
     return this.http
       .get(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="${user}"&endAt="${user}"`
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="admin"&startAt="${user}"&endAt="${user}"`
       )
       .pipe(
         map((respData) => {
