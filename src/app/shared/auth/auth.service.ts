@@ -18,6 +18,7 @@ export interface AuthResponseData {
   registered: boolean;
 }
 
+
 interface GoogleAuthResponseData {}
 
 @Injectable({
@@ -26,6 +27,7 @@ interface GoogleAuthResponseData {}
 export class AuthService {
   constructor(public afireAuth: AngularFireAuth, private http: HttpClient, private router: Router) {}
 
+  userEmail: any;
   user = new Subject<User>();
 
   isLoggedin = false;
@@ -99,6 +101,8 @@ export class AuthService {
       token,
       expirationDate);
 
+      this.userEmail = user.email;
+
     this.user.next(user);
   }
 
@@ -141,11 +145,17 @@ export class AuthService {
     return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
-        
+
+       this.userEmail = result.additionalUserInfo.profile['email'];
+
+       console.log(this.userEmail)
+
         const user = new User(
           result.user.email,
           result.user.uid,
           result.user.refreshToken);
+
+
           this.user.next(user);
         this.router.navigate(['/projects'])
       })
