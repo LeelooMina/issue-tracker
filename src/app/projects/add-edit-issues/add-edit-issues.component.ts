@@ -16,26 +16,28 @@ import { IssueService } from 'src/app/shared/issue.service';
 export class AddEditIssuesComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private authService: AuthService, public router: Router, private issueService: IssueService) { }
+
   ID: string;
   user: User;
+  projectName: string;
 
   private userSub: Subscription;
 
-  onSubmit(addProject: NgForm){
-    console.log("email", this.authService.loggedInUser.email)
+  onSubmit(addIssue: NgForm){
+
   let issue: Issue  = {
-    title: addProject.value.projectName,
-    description: addProject.value.projectDes,
-    createdBy: this.user.email,
-    type: addProject.value.allowedUsers,
+    title: addIssue.value.title,
+    description: addIssue.value.description,
+    createdBy: this.authService.userEmail,
+    type: addIssue.value.type,
     projectID: this.ID,
-    ID: 0,
-    claimedBy: this.user.email,
+    ID: '0',
+    claimedBy: "",
     claimed: false,
     done: false
   }
 
-  this.issueService.postIssues(issue, this.ID);
+  this.issueService.postIssues(issue);
   this.router.navigate(['/projects'])
 
   console.log(issue);
@@ -44,7 +46,12 @@ export class AddEditIssuesComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.ID = params['id'];
+      console.log(this.ID)
+
   })
+
+
+
   this.userSub = this.authService.user.subscribe(user => {
     this.user = user;
   })

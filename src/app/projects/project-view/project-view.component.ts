@@ -20,16 +20,55 @@ export class ProjectViewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private issueService: IssueService, private projectService: ProjectService) { }
 
+  onDelete(issue){
+    this.issueService.deleteIssue(issue, this.ID).subscribe((res) => {
+
+      this.issueService.onFetchIssues(this.ID).subscribe((payload) => {
+        this.issueList = payload;
+    })
+  })
+
+  }
+
+  onClaim(issue){
+
+    this.issueService.claimIssue(issue).subscribe((responseData) => {
+      this.issueService.onFetchIssues(this.ID).subscribe((payload) => {
+        this.issueList = payload;
+    })
+    });
+
+
+  }
+
+
+
+
+
+
   ngOnInit(): void {
 
     this.route.params.subscribe(params => {
       this.ID = params['id'];
-      })
+      this.projectName = params['name'];
 
-  this.route.params.subscribe(params => {
-    this.projectName = params['name'];
-})
-  this.issueList = this.issueService.getIssues()
+      this.issueService.issueSubject.subscribe((issue) => {
+        this.issueService
+        console.log(issue)
+    });
+
+      this.issueService.onFetchIssues(this.ID).subscribe((payload) => {
+        this.issueList = payload;
+        console.log('test', this.issueList)
+
+
+    })
+
+
+
+
+    })
+// this.issueList = this.issueService.getIssues()
 
 
   }

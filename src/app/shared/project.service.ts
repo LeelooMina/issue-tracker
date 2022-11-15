@@ -29,6 +29,7 @@ export class ProjectService {
   private projects: Project[] = [];
 
 projectSubject = new Subject<Project[]>();
+
   getProjects() {
     // this.fetchProjects();
     return this.projects.slice();
