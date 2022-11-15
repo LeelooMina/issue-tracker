@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
@@ -6,10 +7,12 @@ import { AuthService } from '../shared/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+
+  private userSub: Subscription;
 
   showBurgerMenu: boolean;
-  isLoggedin = this.authService.isLoggedin;
+  isLoggedin: boolean = false;
 
   onClick(){
     this.isLoggedin = !this.isLoggedin;
@@ -18,6 +21,13 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isLoggedin = !user ? false : true;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
   }
 
 }
