@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
   placeHolderPass: string;
   error: string = null;
 
- 
+
 
   // Changes the mode of the signin/login form
   // Switches placeholder text
@@ -81,6 +81,9 @@ export class SignInComponent implements OnInit {
         this.isLoginMode = false;
         this.placeHolderPass = 'Make it a good one!';
         this.placeHolderEmail = 'you@test.com';
+      } else if(params['id'] === 'out') {
+        this.isLoginMode = true;
+        this.error = "Logged out"
       }
     });
   }
