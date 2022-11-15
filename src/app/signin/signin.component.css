@@ -1,6 +1,6 @@
 .is-fullheight{
   height: 91vh;
-  width: 100vh;
+
 }
 
 
@@ -8,13 +8,18 @@
   display: none;
 }
 
-
-
-
 .container{
   display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+.columns{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80vw;
 }
 
 li {
