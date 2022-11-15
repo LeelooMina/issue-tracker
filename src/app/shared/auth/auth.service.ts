@@ -35,6 +35,8 @@ export class AuthService {
     email: '',
   };
 
+
+
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
@@ -76,6 +78,10 @@ export class AuthService {
           +respData.expiresIn
         );
       }));
+  }
+
+  logout(){
+    this.user.next(null)
   }
 
   private handleAuth(

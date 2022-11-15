@@ -19,6 +19,8 @@ export class SignInComponent implements OnInit {
   placeHolderPass: string;
   error: string = null;
 
+ 
+
   // Changes the mode of the signin/login form
   // Switches placeholder text
 

@@ -1,29 +1,31 @@
-<body class="has-background-primary">
+<body class="has-background-primary is-fullheight">
 
-  <div class="container has-background-primary is-fullheight">
+  <div class="container has-background-primary">
 
     <div class="columns">
 
       <div class="hide-mobile">
-      <div class="column">
+        <div class="column">
 
 
-        <div class="box is-light mt-5 mx-3" id="greeting">
-          <div *ngIf="isLoginMode; else signUpText">
-            <h1 class="title has-text-black pb-1"><strong>Welcome back!</strong></h1>
+          <div class="box is-light mt-5 mx-3" id="greeting">
+            <div *ngIf="isLoginMode; else signUpText">
+              <h1 class="title has-text-black pb-1"><strong>Welcome back!</strong></h1>
 
-          </div>
-          <ng-template #signUpText>
+            </div>
+            <ng-template #signUpText>
 
-            <h1 class="title has-text-black mb-6"><strong>Get started today!</strong></h1>
-          </ng-template>
-            <div class="hide-mobile subtitle has-text-black"><ul class="m-5">
-              <li>Collaborate with coworkers and friends</li>
-              <li>Keep your probjects all in one place</li>
-              <li>Track issues that arrise during devlopment</li>
-              <li>Prevent redundancy by assigning tasks</li>
-              <li>Plan out new features</li>
-            </ul></div>
+              <h1 class="title has-text-black mb-6"><strong>Get started today!</strong></h1>
+            </ng-template>
+            <div class="hide-mobile subtitle has-text-black">
+              <ul class="m-5">
+                <li>Collaborate with coworkers and friends</li>
+                <li>Keep your probjects all in one place</li>
+                <li>Track issues that arrise during devlopment</li>
+                <li>Prevent redundancy by assigning tasks</li>
+                <li>Plan out new features</li>
+              </ul>
+            </div>
           </div>
 
         </div>
@@ -35,8 +37,8 @@
             <app-loading-spinner></app-loading-spinner>
           </div>
           <div class="show-mobile">
-              <strong>{{isLoginMode ? 'Welcome back!' : 'Get started!'}}</strong>
-            </div>
+            <strong>{{isLoginMode ? 'Welcome back!' : 'Get started!'}}</strong>
+          </div>
           <form (ngSubmit)="onSubmitAuth(authForm)" #authForm="ngForm" *ngIf="!isLoading">
             <div class="notification is-danger" *ngIf="error">{{error}}</div>
             <label class="label m-2">Email:</label>
@@ -64,18 +66,18 @@
             </button>
             <button class="button is-light m-3" (click)="onSwitchMode()"> {{ isLoginMode ? 'Sign Up' : 'Login'
               }}</button>
-              <img src=".\assets\btn_google_signin_light_normal_web.png" (click)="authService.GoogleAuth()">
+            <img src=".\assets\btn_google_signin_light_normal_web.png" (click)="authService.GoogleAuth()">
 
           </form>
 
         </div>
 
 
-        </div>
-
-        </div>
       </div>
 
+
+    </div>
+    </div>
 
 
 </body>
