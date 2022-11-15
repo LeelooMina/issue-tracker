@@ -61,7 +61,7 @@
 
           <!-- <button class="button" (click)="onClick()">Login/out test</button> -->
           <div *ngIf="isLoggedin">
-          <a class="button is-primary" routerLink="/edit-project"><strong>Add a new project</strong></a>
+          <a class="button is-primary" [routerLink]='["/project", "add"]'><strong>Add a new project</strong></a>
           <a class="button is-light"
           (click)="this.authService.logout()">
             Log Out

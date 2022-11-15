@@ -29,7 +29,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'edit-project/:id',
+    path: 'project/:id',
     component: AddEditProjectsComponent
   },
   {
