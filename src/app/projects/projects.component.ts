@@ -16,6 +16,7 @@ export class ProjectsComponent implements OnInit {
 
 
 
+
   loadProject(project) {
     console.log(project);
   }
@@ -25,7 +26,7 @@ export class ProjectsComponent implements OnInit {
       this.projectService.onFetchProjects(this.user).subscribe((payload) => {
         this.projectList = payload;
       });
-      
+
     });
 
     alert(`${project.name} is now gone forever.`);
@@ -44,14 +45,18 @@ export class ProjectsComponent implements OnInit {
   })
   }
 
-
-
+  ngOnDestroy() {
+    this.user = 'blankpage@gmail.com';
   }
 
 
-  // onClickSearch() {
-  //   this.projectService.onFetchProjects(this.user).subscribe((payload) => {
-  //     this.projectList = payload;
-  //   });
-  // }
 
+
+
+
+  onClickSearch() {
+    this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+      this.projectList = payload;
+    });
+  }
+}
