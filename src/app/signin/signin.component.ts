@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
     this.isLoginMode
-      ? (this.placeHolderPass = "That's the combo on my luggage!")
+      ? (this.placeHolderPass = "You remember, right?")
       : (this.placeHolderPass = 'Make it a good one!');
     this.isLoginMode
       ? (this.placeHolderEmail = 'Your email address')
