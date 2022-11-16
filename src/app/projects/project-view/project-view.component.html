@@ -54,8 +54,8 @@
 
 
                     <div class="box mb-3">
-
-                      <table class="table is-striped" style="width:100%">
+                      <div class="table-container">
+                        <table class="table is-striped" style="width:100%">
                         <thead>
                           <tr>
                             <th>Description</th>
@@ -68,10 +68,11 @@
                         <tbody>
 
                           <tr *ngFor="let issue of issueList; let i = index">
+
                             <td><p><strong>{{issue.title}}</strong></p><p>{{ issue.description }}</p></td>
                             <td>
-                              <div *ngIf="issue.claimed === false; else ifClaimed"><button class="button is-primary is-small" (click)="onClaim(issue)">Claim</button></div>
-                            <ng-template #ifClaimed><button [disabled]="" (click)="onClaim(issue)" class="button is-light is-small">{{issue.claimedBy}}</button></ng-template></td>
+                              <div *ngIf="issue.done"><button [disabled]="" class="button is-light is-small">Completed</button> </div><div *ngIf="!issue.claimed; else ifClaimed"><button class="button is-primary is-small" (click)="onClaim(issue)">Claim</button></div>
+                            <ng-template #ifClaimed><button [disabled]="" class="button is-light is-small">{{issue.claimedBy}}</button></ng-template></td>
                             <td>{{ issue.createdBy }}</td>
                             <td>{{ issue.type }}</td>
                             <td>
@@ -102,5 +103,6 @@
 
                         </tbody>
                       </table>
+                      </div>
 
                     </div>
