@@ -4,6 +4,7 @@ export interface Issue{
   createdBy: string,
   claimedBy: string, //UserID or string "none"
   type: string, //Feature Request, Bug, Other Task
+  projectName: string,
   projectID: string,
   ID: string, //Issue ID
   claimed: boolean;
