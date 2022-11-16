@@ -27,7 +27,9 @@ import { AuthService } from './auth/auth.service';
 })
 export class ProjectService {
   private projects: Project[] = [];
+
 projectSubject = new Subject<Project[]>();
+
   getProjects() {
     // this.fetchProjects();
     return this.projects.slice();
@@ -45,7 +47,7 @@ projectSubject = new Subject<Project[]>();
       .subscribe((responseData) => {
         this.projects.push(project);
         this.projectSubject.next(this.getProjects())
-        console.log(responseData);
+
       });
   }
 
@@ -64,46 +66,37 @@ projectSubject = new Subject<Project[]>();
     }
   }
 
-  getProjectDesc(projectID) {
-    this.http
+  getProject(projectID) {
+    return this.http
       .get(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}.json`
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${projectID}.json`,
+      {
+        observe: 'response'
+      }
       )
-      .pipe(
-        map((respData) => {
-          return respData
-        })
-      );
-      return null;
 
   }
 
-  // private fetchProjects(){
-  //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
-  //     let projectArr = [];
-  //     for(let key in respData){
-  //       if(respData[key].allowedUsers.includes(this.authService.loggedInUser.email)){
-  //       projectArr.push({ ...respData[key], ID: key})
-  //     }}
-  //     return projectArr;
-  //   }))
-  //   .subscribe(project => {
 
-  //     console.log("payload", project);
-  //     this.projects = project;
+  updateProject(project: Project) {
 
-  //     // this.projects.push(project)
+      this.http.patch(
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects/${project.ID}/.json`, project,
+        {
+          observe: 'response',
+        }
+      ) .subscribe((responseData) => {
+        this.projectSubject.next(this.getProjects())
+        console.log(responseData)
+      });
 
-  //     // Add a subject to call next
-  //   })
-  //   //emit new project
-  //   //filter out projects by user currently logged in
-  // }
+  }
+
 
   onFetchProjects(user) {
     return this.http
       .get(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="allowedUsers"&startAt="${user}"&endAt="${user}"`
+        `https://it-db-ad530-default-rtdb.firebaseio.com/projects.json?orderBy="admin"&startAt="${user}"&endAt="${user}"`
       )
       .pipe(
         map((respData) => {
