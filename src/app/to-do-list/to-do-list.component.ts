@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth/auth.service';
 import { ToDo } from '../shared/todo.model';
 import { ToDoService } from '../shared/todo.service';
 
@@ -9,14 +10,39 @@ import { ToDoService } from '../shared/todo.service';
 })
 export class ToDoListComponent implements OnInit {
 
-  constructor(private toDoService: ToDoService) { }
+  constructor(private toDoService: ToDoService, private authService: AuthService) { }
 
   toDoList: ToDo[] = [];
 
+
+  userEmail = this.authService.userEmail;
+
+
+  onMarkDone(todo){
+
+    todo.done = !todo.done;
+
+    this.toDoService.updateToDo(todo);
+
+    this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
+      this.toDoList = payload;
+      console.log('test', this.toDoList)
+
+
+  })
+
+
+
+  }
+
   ngOnInit(): void {
 
-    this.toDoList = this.toDoService.getToDos();
-    console.log(this.toDoList)
+    this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
+      this.toDoList = payload;
+      console.log('test', this.toDoList)
+
+
+  })
   }
 
 }
