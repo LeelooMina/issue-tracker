@@ -12,6 +12,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Project } from './project.model';
+import { ToDo } from './todo.model';
 
 
 @Injectable({
@@ -72,16 +73,18 @@ issueSubject = new Subject<Issue[]>();
   }else {
     issue.claimed = true;
     issue.claimedBy = this.authService.userEmail;
-    //Add todo
+
+    
+
+    return this.http.patch(
+       `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}/.json`, issue,
+       {
+         observe: 'response',
+       }
+     )
   }
 
 
-   return this.http.patch(
-      `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}/.json`, issue,
-      {
-        observe: 'response',
-      }
-    )
   }
 
   unClaimIssue(issue){

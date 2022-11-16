@@ -4,6 +4,9 @@ import { ProjectService } from 'src/app/shared/project.service';
 import { Project } from 'src/app/shared/project.model';
 import { IssueService } from 'src/app/shared/issue.service';
 import { Issue } from 'src/app/shared/issue.model';
+import { ToDo } from 'src/app/shared/todo.model';
+import { AuthService } from 'src/app/shared/auth/auth.service';
+import { ToDoService } from 'src/app/shared/todo.service';
 
 @Component({
   selector: 'app-project-view',
@@ -18,7 +21,7 @@ export class ProjectViewComponent implements OnInit {
 
   issueList: Issue[] = [];
 
-  constructor(private route: ActivatedRoute, private issueService: IssueService, private projectService: ProjectService) { }
+  constructor(private route: ActivatedRoute, private issueService: IssueService, private projectService: ProjectService, private authService: AuthService, private toDoService: ToDoService) { }
 
   onDelete(issue){
     this.issueService.deleteIssue(issue, this.ID).subscribe((res) => {
@@ -33,6 +36,21 @@ export class ProjectViewComponent implements OnInit {
   onClaim(issue){
 
     this.issueService.claimIssue(issue).subscribe((responseData) => {
+
+      let todo: ToDo = {
+        title: issue.title,
+        description: issue.description,
+        createdBy: issue.createdBy,
+        type: issue.type,
+        issueID: issue.ID,
+        userID: this.authService.userEmail,
+        todo: true,
+        doing: false,
+        done: false,
+      }
+
+      this.toDoService.postToDo(todo);
+      
       this.issueService.onFetchIssues(this.ID).subscribe((payload) => {
         this.issueList = payload;
     })

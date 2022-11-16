@@ -18,103 +18,32 @@ import { ToDo } from './todo.model';
   providedIn: 'root'
 })
 export class ToDoService {
-  private todos: ToDo[] = [{
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
 
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
 
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
+  private todos: ToDo[];
 
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
+  todoSubject = new Subject<ToDo[]>();
 
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
+  userEmail = this.authService.userEmail;
 
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
-
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
-
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
-
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    type: "Bug",
-    issueID: '1',
-    userID: 'blankpage@gmail.com',
-
-  }]
 
   getToDos(){
     return this.todos.slice();
   }
 
-  postIssues(issue: Issue, projectID){
+  postToDo(todo: ToDo){
 
     this.http.post(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${projectID}.json`,
-        issue,
+        `https://it-db-ad530-default-rtdb.firebaseio.com/todos.json`,
+        todo,
         {
           observe: 'response'
         }
       )
       .subscribe(
-        responseData => {
+        (responseData) => {
+
+          // this.todoSubject.next(this.getToDos())
           console.log(responseData);
         },
       );
@@ -126,7 +55,7 @@ export class ToDoService {
     let alertResp = confirm(`Do you really want to delete ${issue.title}?`)
     if (alertResp){
       return this.http.delete(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/Issues/${projectID}.json`,
+        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}.json`,
         {
           observe: 'response'
         }
@@ -138,23 +67,39 @@ export class ToDoService {
     }
   }
 
-  getSingleIssue(issueID){
+  unClaimToDo(todo){
 
-  }
+  let issue: Issue;
 
-  onFetchIssues(projectID){
 
-    return this.http.get(`https://it-db-ad530-default-rtdb.firebaseio.com/issues.json?orderBy="Project_ID"&startAt="${projectID}"&endAt="${projectID}"`).pipe(map(respData => {
-      let issueArr = [];
-      for(let key in respData){
-
-        issueArr.push({ ...respData[key], ID: key})
-
+   this.http.get(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${todo.issueID}/.json`,
+      {
+        observe: 'response',
       }
-      console.log(issueArr)
-      return issueArr;
-    }))
+    ).subscribe(issueResp =>{
+      console.log(issueResp)
+    })
   }
+
+
+  onFetchToDos(userEmail){
+
+    return this.http.get(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/todos.json?orderBy="userID"&startAt="${userEmail}"&endAt="${userEmail}"`)
+      .pipe(
+
+      map((respData) => {
+        let issueArr = [];
+        for (let key in respData) {
+          if(respData.hasOwnProperty(key)){issueArr.push({ ...respData[key], ID: key });
+        }}
+        console.log(issueArr);
+        return issueArr;
+      })
+      );
+    }
+
 
 
 
@@ -162,3 +107,4 @@ export class ToDoService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 }
+
