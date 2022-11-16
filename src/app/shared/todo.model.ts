@@ -9,4 +9,5 @@ export interface ToDo {
   todo?: boolean,
   doing?: boolean,
   done?: boolean,
+  ID?: string;
 }

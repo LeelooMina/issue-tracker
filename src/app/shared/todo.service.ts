@@ -50,8 +50,29 @@ export class ToDoService {
 
   }
 
+  updateToDo(todo: ToDo){
 
-  deleteIssue(issue: Issue, projectID){
+
+    this.http.patch(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/todos/${todo.ID}/.json`,
+      todo,
+      {
+        observe: 'response'
+      }
+    )
+    .subscribe(
+      (responseData) => {
+
+        // this.todoSubject.next(this.getToDos())
+        console.log("todo Patch:", responseData);
+      },
+    );
+
+
+  }
+
+
+  deleteToDo(issue: Issue, projectID){
     let alertResp = confirm(`Do you really want to delete ${issue.title}?`)
     if (alertResp){
       return this.http.delete(
@@ -72,7 +93,7 @@ export class ToDoService {
   let issue: Issue;
 
 
-   this.http.get(
+   this.http.patch(
       `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${todo.issueID}/.json`,
       {
         observe: 'response',
@@ -81,6 +102,7 @@ export class ToDoService {
       console.log(issueResp)
     })
   }
+
 
 
   onFetchToDos(userEmail){

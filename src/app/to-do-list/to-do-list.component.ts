@@ -17,6 +17,24 @@ export class ToDoListComponent implements OnInit {
 
   userEmail = this.authService.userEmail;
 
+
+  onMarkDone(todo){
+
+    todo.done = true;
+
+    this.toDoService.updateToDo(todo);
+
+    this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
+      this.toDoList = payload;
+      console.log('test', this.toDoList)
+
+
+  })
+
+
+
+  }
+
   ngOnInit(): void {
 
     this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
