@@ -16,17 +16,20 @@
       <label class="label">Project Name:</label>
       <div class="control">
         <input name="projectName" [(ngModel)]="projectName" class="input" ngModel required>
+        <label class="label">Description:</label>
+        <textarea name="projectDes" [(ngModel)]="projectDesc" class="textarea" ngModel></textarea>
+
+        <!-- <label class="label">Allowed Users:</label>
+        <textarea name="allowedUsers" class="textarea" ngModel></textarea> -->
+
+        <p class="label">Make public?</p>
+          <input type="checkbox" name="publicView" value="true" [(ngModel)]="publicView">
       </div>
     </div>
 
-    <label class="label">Description:</label>
-    <textarea name="projectDes" [(ngModel)]="projectDesc" class="textarea" ngModel></textarea>
 
-    <!-- <label class="label">Allowed Users:</label>
-    <textarea name="allowedUsers" class="textarea" ngModel></textarea> -->
+      <button type="submit" class="button is-primary mt-3" [disabled]="!addProject.valid">Save</button>
 
-
-    <button type="submit" class="button is-primary mt-3" [disabled]="!addProject.valid">Save</button>
-  </form>
+    </form>
 </div></div></div></div></div></div></section>
 

@@ -27,23 +27,27 @@ export class AddEditProjectsComponent implements OnInit {
 
   addOrEdit: string;
 
+  publicView: boolean;
+
 
   onSubmit(addProject: NgForm){
 
     if(this.ID === 'add'){
 
-    console.log(this.user)
   let project: Project  = {
     name: addProject.value.projectName,
   description: addProject.value.projectDes,
   admin: this.authService.userEmail,
   allowedUsers: addProject.value.allowedUsers,
-  ID: '0' }
+  ID: '0',
+  publicView: this.publicView }
+
+  console.log(this.publicView)
 
   this.projectService.postProjects(project);
   this.router.navigate(['/projects'])
 
-  console.log(project);
+  
     } else {
       let project: Project  = {
         name: this.projectName,
@@ -77,6 +81,7 @@ export class AddEditProjectsComponent implements OnInit {
        this.projectService.getProject(this.ID).subscribe(pro => {
         this.projectName = pro.body['name'];
         this.projectDesc = pro.body['description'];
+        this.publicView = pro.body['publicView']
         }) }
 
 

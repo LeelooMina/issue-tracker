@@ -2,6 +2,7 @@ export interface Project{
   name: string,
   description: string,
   admin: string,
-  allowedUsers: string[],
-  ID: string
+  allowedUsers?: string,
+  ID: string,
+  publicView?: boolean,
 }

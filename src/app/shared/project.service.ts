@@ -93,28 +93,6 @@ projectSubject = new Subject<Project[]>();
   }
 
 
-  // private fetchProjects(){
-  //   this.http.get('https://it-db-ad530-default-rtdb.firebaseio.com/projects.json').pipe(map(respData => {
-  //     let projectArr = [];
-  //     for(let key in respData){
-  //       if(respData[key].allowedUsers.includes(this.authService.loggedInUser.email)){
-  //       projectArr.push({ ...respData[key], ID: key})
-  //     }}
-  //     return projectArr;
-  //   }))
-  //   .subscribe(project => {
-
-  //     console.log("payload", project);
-  //     this.projects = project;
-
-  //     // this.projects.push(project)
-
-  //     // Add a subject to call next
-  //   })
-  //   //emit new project
-  //   //filter out projects by user currently logged in
-  // }
-
   onFetchProjects(user) {
     return this.http
       .get(
