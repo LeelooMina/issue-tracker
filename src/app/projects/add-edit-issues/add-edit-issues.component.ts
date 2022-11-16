@@ -30,6 +30,7 @@ export class AddEditIssuesComponent implements OnInit {
     description: addIssue.value.description,
     createdBy: this.authService.userEmail,
     type: addIssue.value.type,
+    projectName: this.projectName,
     projectID: this.ID,
     ID: '0',
     claimedBy: "",
@@ -46,6 +47,7 @@ export class AddEditIssuesComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.ID = params['id'];
+      this.projectName = params['name'];
       console.log(this.ID)
 
   })

@@ -42,6 +42,7 @@ export class ProjectViewComponent implements OnInit {
         description: issue.description,
         createdBy: issue.createdBy,
         type: issue.type,
+        projectName: issue.projectName,
         issueID: issue.ID,
         userID: this.authService.userEmail,
         todo: true,
@@ -50,7 +51,7 @@ export class ProjectViewComponent implements OnInit {
       }
 
       this.toDoService.postToDo(todo);
-      
+
       this.issueService.onFetchIssues(this.ID).subscribe((payload) => {
         this.issueList = payload;
     })
