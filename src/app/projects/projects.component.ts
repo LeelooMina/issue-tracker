@@ -17,12 +17,6 @@ export class ProjectsComponent implements OnInit {
 
 
 
-
-
-
-
-
-
   loadProject(project) {
     console.log(project);
   }
