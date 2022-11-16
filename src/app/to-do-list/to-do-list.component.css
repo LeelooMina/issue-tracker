@@ -9,7 +9,37 @@
 }
 
 
+.card-header{
+  border-radius: 10px 10px 0px 0px;
+}
 
+.card{
+
+  border-radius: 0px 0px 10px 10px
+}
+
+
+.is-fullheight{
+  min-height: 91vh;
+  width: 100vw;
+}
+
+
+.box{
+
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+.projectTitle:hover{
+  background-color:gray;
+  border-radius: 10px 10px 0px 0px;
+}
+
+a:link, a:visited {
+  color: black;
+}
 
 
 
