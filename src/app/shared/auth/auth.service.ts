@@ -15,8 +15,9 @@ export interface AuthResponseData {
   refreshToken: string;
   expiresIn: string;
   localId: string;
-  registered?: boolean;
+  registered: boolean;
 }
+
 
 interface GoogleAuthResponseData {}
 
@@ -26,6 +27,7 @@ interface GoogleAuthResponseData {}
 export class AuthService {
   constructor(public afireAuth: AngularFireAuth, private http: HttpClient, private router: Router) {}
 
+  userEmail: any;
   user = new Subject<User>();
 
   isLoggedin = false;
@@ -81,7 +83,6 @@ export class AuthService {
   }
 
   logout(){
-    this.user.next(null)
   }
 
   private handleAuth(
@@ -96,6 +97,8 @@ export class AuthService {
       userID,
       token,
       expirationDate);
+
+      this.userEmail = user.email;
 
     this.user.next(user);
   }
@@ -125,11 +128,32 @@ export class AuthService {
     return this.AuthLogin(new GoogleAuthProvider());
   }
 
-  // Auth logic to run auth providers
+  // Google User Model:
+
+// displayName, email, emailVerified, isAnonymous
+
+// metadata, phoneNumber, photoURL, providerData
+
+
+// providerId, refreshToken, tenantId, uid
+
+
   AuthLogin(provider) {
     return this.afireAuth
       .signInWithPopup(provider)
       .then((result) => {
+
+       this.userEmail = result.additionalUserInfo.profile['email'];
+
+       console.log(this.userEmail)
+
+        const user = new User(
+          result.user.email,
+          result.user.uid,
+          result.user.refreshToken);
+
+
+          this.user.next(user);
         this.router.navigate(['/projects'])
       })
       .catch((error) => {
