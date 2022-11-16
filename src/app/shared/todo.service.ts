@@ -100,6 +100,14 @@ export class ToDoService {
 
   }]
 
+
+  private todos: ToDo[];
+
+  todoSubject = new Subject<ToDo[]>();
+
+  userEmail = this.authService.userEmail;
+
+
   getToDos(){
     return this.todos.slice();
   }
