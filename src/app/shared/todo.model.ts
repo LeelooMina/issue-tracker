@@ -3,9 +3,11 @@ export interface ToDo {
   description: string,
   createdBy: string,
   type: string,
+  projectName: string;
   issueID: string,
   userID: string,
   todo?: boolean,
   doing?: boolean,
   done?: boolean,
+  ID?: string;
 }
