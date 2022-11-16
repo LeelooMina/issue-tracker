@@ -20,7 +20,7 @@ export class ToDoListComponent implements OnInit {
 
   onMarkDone(todo){
 
-    todo.done = true;
+    todo.done = !todo.done;
 
     this.toDoService.updateToDo(todo);
 
