@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../shared/auth/auth.service';
 import { Project } from '../shared/project.model';
 import { ProjectService } from '../shared/project.service';
 
@@ -9,44 +12,67 @@ import { ProjectService } from '../shared/project.service';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private authService: AuthService, private router: Router) {}
+
   projectList: Project[] = [];
 
-  user = 'blankpage@gmail.com';
+  myProjectView: boolean = true;
+  publicProjectView: boolean = false;
+  searchView: boolean = false;
 
-
+  searchTerm: string = ""
 
 
   loadProject(project) {
     console.log(project);
   }
 
-  onDelete(project) {
+  onDelete(project: Project) {
+    if(project.admin === this.authService.userEmail){
+
+
     this.projectService.deleteProject(project).subscribe((responseData) => {
-      this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+      this.projectService.onFetchProjects(this.authService.userEmail).subscribe((payload) => {
         this.projectList = payload;
       });
 
     });
 
     alert(`${project.name} is now gone forever.`);
+  } else{
+    alert("Sorry you aren't authorized to delete this project")
+  }
+  }
+
+  onEdit(project: Project){
+    if (this.authService.userEmail === project.admin){
+      this.router.navigate(['/project', project.ID])
+
+    }else{
+      alert("Sorry you aren't authorized to edit this project")
+    }
+  }
+
+  onChangeNav(){
+    this.myProjectView = !this.myProjectView
+    this.publicProjectView = !this.publicProjectView
   }
 
   ngOnInit(): void {
 
-    this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+    this.projectService.onFetchProjects(this.authService.userEmail).subscribe((payload) => {
       this.projectList = payload;
     });
 
-    this.projectService.projectSubject.subscribe((project) => {
-      this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+  this.projectService.projectSubject.subscribe((project) => {
+      this.projectService.onFetchProjects(this.authService.userEmail).subscribe((payload) => {
         this.projectList = payload;
     });
   })
   }
 
   ngOnDestroy() {
-    this.user = 'blankpage@gmail.com';
+
   }
 
 
@@ -55,7 +81,7 @@ export class ProjectsComponent implements OnInit {
 
 
   onClickSearch() {
-    this.projectService.onFetchProjects(this.user).subscribe((payload) => {
+    this.projectService.onFetchProjects(this.searchTerm).subscribe((payload) => {
       this.projectList = payload;
     });
   }
