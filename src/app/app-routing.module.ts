@@ -37,7 +37,7 @@ const routes: Routes = [
     component: ProjectViewComponent
   },
   {
-    path: 'add-issue/:id',
+    path: 'add-issue/:id/:name',
     component: AddEditIssuesComponent
   },
   {
