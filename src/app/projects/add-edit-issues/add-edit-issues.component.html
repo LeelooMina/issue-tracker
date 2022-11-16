@@ -6,7 +6,7 @@
           <div class="box is-light">
             <div class="field">
               <h1 class="title has-text-black">
-                <p>Add or Edit Issue</p>
+                <p>Add or Edit Issue {{projectName}}</p>
               </h1>
 
               <form (ngSubmit)="onSubmit(addIssue)" #addIssue="ngForm">
@@ -14,7 +14,7 @@
 
 
                 <div  class="select  mb-3">
-                <select name="type">
+                <select name="type" ngModel>
                   <option value="Bug">Bug</option>
                   <option value="Feature Request">Feature</option>
                   <option value="Other Task">Other Task</option>
