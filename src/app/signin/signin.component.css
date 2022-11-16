@@ -30,6 +30,12 @@ li {
   list-style-type: square;
 }
 
+img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+}
 
 @media(min-width: 1100px){
   .columns{
@@ -44,7 +50,9 @@ li {
     height: 88vh;
     width: 100vw;
   }
-
+  .columns{
+    flex-direction: column;
+  }
   .container{
     margin: 0vh;
     margin: 0vw;
