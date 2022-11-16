@@ -12,127 +12,34 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { Subject, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { Project } from './project.model';
+import { ToDo } from './todo.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssueService {
-  private issues: Issue[] = [{
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Bug",
-    projectID: '1',
-    ID: 1,
-    claimed: false,
-    done: false
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Feature Request",
-    projectID: '1',
-    ID: 2,
-    claimed: false,
-    done: false
-  },
-  {
-  title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Future Feature",
-    projectID: '1',
-    ID: 3,
-    claimed: false,
-    done: false
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Bug",
-    projectID: '1',
-    ID: 1,
-    claimed: false,
-    done: false
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Feature Request",
-    projectID: '1',
-    ID: 2,
-    claimed: false,
-    done: false
-  },
-  {
-  title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Future Feature",
-    projectID: '1',
-    ID: 3,
-    claimed: false,
-    done: false
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "false",
-    type: "Bug",
-    projectID: '1',
-    ID: 1,
-    claimed: false,
-    done: false
-  },
-  {
-    title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "none",
-    type: "Feature Request",
-    projectID: '1',
-    ID: 2,
-    claimed: false,
-    done: false
-  },
-  {
-  title: "Title",
-    description: "describe issues",
-    createdBy: "username / ID",
-    claimedBy: "false",
-    type: "Future Feature",
-    projectID: '1',
-    ID: 3,
-    claimed: false,
-    done: false
-  }]
+  private issues: Issue[];
+
+issueSubject = new Subject<Issue[]>();
 
   getIssues(){
     return this.issues.slice();
   }
 
-  postIssues(issue: Issue, projectID){
+  postIssues(issue: Issue){
 
     this.http.post(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${projectID}.json`,
+        `https://it-db-ad530-default-rtdb.firebaseio.com/issues.json`,
         issue,
         {
           observe: 'response'
         }
       )
       .subscribe(
-        responseData => {
+        (responseData) => {
+
+          this.issueSubject.next(this.getIssues())
           console.log(responseData);
         },
       );
@@ -144,7 +51,7 @@ export class IssueService {
     let alertResp = confirm(`Do you really want to delete ${issue.title}?`)
     if (alertResp){
       return this.http.delete(
-        `https://it-db-ad530-default-rtdb.firebaseio.com/Issues/${projectID}.json`,
+        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}.json`,
         {
           observe: 'response'
         }
@@ -156,23 +63,51 @@ export class IssueService {
     }
   }
 
-  getSingleIssue(issueID){
+  claimIssue(issue){
+
+    if(issue.claimed){
+      issue.claimed = false;
+    issue.claimedBy = ''
+
+    //remove todo
+  }else {
+    issue.claimed = true;
+    issue.claimedBy = this.authService.userEmail;
+
+    
+
+    return this.http.patch(
+       `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}/.json`, issue,
+       {
+         observe: 'response',
+       }
+     )
+  }
+
+
+  }
+
+  unClaimIssue(issue){
 
   }
 
   onFetchIssues(projectID){
 
-    return this.http.get(`https://it-db-ad530-default-rtdb.firebaseio.com/issues.json?orderBy="Project_ID"&startAt="${projectID}"&endAt="${projectID}"`).pipe(map(respData => {
-      let issueArr = [];
-      for(let key in respData){
+    return this.http.get(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/issues.json?orderBy="projectID"&startAt="${projectID}"&endAt="${projectID}"`)
+      .pipe(
 
-        issueArr.push({ ...respData[key], ID: key})
+      map((respData) => {
+        let projectArr = [];
+        for (let key in respData) {
+          if(respData.hasOwnProperty(key)){projectArr.push({ ...respData[key], ID: key });
+        }}
+        console.log(projectArr);
+        return projectArr;
+      })
+      );
+    }
 
-      }
-      console.log(issueArr)
-      return issueArr;
-    }))
-  }
 
 
 
