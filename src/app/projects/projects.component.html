@@ -20,9 +20,29 @@
 
 
     <div class="box">
-     <input class="">
-     <button class="button is-small is-pulled-right">Search for open projects</button>
-  <!-- <input class="input" id="search" [(ngModel)]="user"> <button class="button is-light is-small" (click)="onClickSearch()">Search</button> -->
+      <div class="tabs is-boxed">
+        <ul>
+          <li [class.is-active]="myProjectView" name="publicProjects" (click)="onChangeNav()">
+            <a>
+
+              <span>My Projects</span>
+            </a>
+          </li>
+          <li [class.is-active]="publicProjectView" name="publicProjects" (click)="onChangeNav()">
+            <a>
+
+              <span>Search Projects</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="publicProjectView">
+
+        <input class="input" id="search" [(ngModel)]="searchTerm" placeholder="Enter user's email address"> <button
+          class="button is-light is-small" (click)="onClickSearch()">Search</button>
+      </div>
+
+
       <div *ngFor="let project of projectList">
 
 
@@ -34,7 +54,7 @@
             <div class="is-right px-2 py-2">
 
               <p class="buttons">
-                <button class="button is-primary is-small"  [routerLink]="['/project', project.ID]">
+                <button class="button is-primary is-small" (click)="onEdit(project)">
                   <span class="icon is-small has-text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                       class="bi bi-pencil" viewBox="0 0 16 16">
@@ -74,6 +94,7 @@
             <div class="card-content">
               <div class="content">
                 <p>{{ project.description }}</p>
+                <div *ngIf="project.publicView"><i>Public</i></div>
               </div>
             </div>
 
