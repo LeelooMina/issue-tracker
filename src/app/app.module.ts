@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
 
 
 
@@ -52,7 +53,8 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
     AddEditProjectsComponent,
     FooterComponent,
     LoadingSpinnerComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    UserDashboardComponent
 
   ],
   imports: [

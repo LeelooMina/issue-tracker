@@ -22,11 +22,14 @@
 
   <div id="navbarBasicExample" class="navbar-menu"  [class.is-active]="showBurgerMenu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/"
+      <a *ngIf="isLoggedin === false"
+      class="navbar-item" routerLink="/"
       routerLinkActive="active">
         Home
       </a>
 
+      <a *ngIf="isLoggedin" class="navbar-item" routerLink="/user-dashboard"
+      routerLinkActive="active" >Dashboard</a>
 
       <a *ngIf="isLoggedin" class="navbar-item" routerLink="/projects"
       routerLinkActive="active" >
