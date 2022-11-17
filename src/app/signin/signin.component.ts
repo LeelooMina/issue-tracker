@@ -75,7 +75,7 @@ export class SignInComponent implements OnInit {
       console.log(params['id']);
       if (params['id'] === 'in') {
         this.isLoginMode = true;
-        this.placeHolderPass = "That's the combo on my luggage!";
+        this.placeHolderPass = "You remember, right?";
         this.placeHolderEmail = 'Your email address';
       } else if (params['id'] === 'up') {
         this.isLoginMode = false;
