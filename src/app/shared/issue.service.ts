@@ -74,7 +74,7 @@ issueSubject = new Subject<Issue[]>();
     issue.claimed = true;
     issue.claimedBy = this.authService.userEmail;
 
-    
+
 
     return this.http.patch(
        `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}/.json`, issue,
@@ -87,9 +87,19 @@ issueSubject = new Subject<Issue[]>();
 
   }
 
-  unClaimIssue(issue){
+  updateIssue(issue: Issue) {
 
-  }
+    this.http.patch(
+      `https://it-db-ad530-default-rtdb.firebaseio.com/issues/${issue.ID}/.json`, issue,
+      {
+        observe: 'response',
+      }
+    ) .subscribe((responseData) => {
+      this.issueSubject.next(this.getIssues())
+      console.log(responseData)
+    });
+
+}
 
   onFetchIssues(projectID){
 
