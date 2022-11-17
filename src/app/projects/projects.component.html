@@ -20,6 +20,28 @@
 
 
     <div class="box">
+      <div class="tabs is-boxed">
+        <ul>
+          <li [class.is-active]="myProjectView" name="publicProjects" (click)="onChangeNav()">
+            <a>
+
+              <span>My Projects</span>
+            </a>
+          </li>
+          <li [class.is-active]="publicProjectView" name="publicProjects" (click)="onChangeNav()">
+            <a>
+
+              <span>Search Projects</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="publicProjectView">
+
+        <input class="input" id="search" [(ngModel)]="searchTerm" placeholder="Enter user's email address"> <button
+          class="button is-light is-small" (click)="onClickSearch()">Search</button>
+      </div>
+
 
       <div *ngFor="let project of projectList">
 
@@ -72,6 +94,7 @@
             <div class="card-content">
               <div class="content">
                 <p>{{ project.description }}</p>
+                <div *ngIf="project.publicView"><i>Public</i></div>
               </div>
             </div>
 
