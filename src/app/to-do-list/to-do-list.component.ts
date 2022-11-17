@@ -22,12 +22,17 @@ export class ToDoListComponent implements OnInit {
 
     todo.done = !todo.done;
 
-    this.toDoService.updateToDo(todo);
+    this.toDoService.updateToDo(todo).subscribe(
+      (responseData) => {
+        this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
+          this.toDoList = payload;
+          console.log('test', this.toDoList)
+        // this.t
+        console.log("todo Patch:", responseData);
+      },
+    );;
 
-    this.toDoService.onFetchToDos(this.userEmail).subscribe((payload) => {
-      this.toDoList = payload;
-      console.log('test', this.toDoList)
-
+   
 
   })
 

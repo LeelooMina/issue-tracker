@@ -42,8 +42,8 @@ export class ToDoService {
       )
       .subscribe(
         (responseData) => {
-
-          // this.todoSubject.next(this.getToDos())
+          this.todos.push(todo)
+          this.todoSubject.next(this.getToDos());
           console.log(responseData);
         },
       );
@@ -53,20 +53,14 @@ export class ToDoService {
   updateToDo(todo: ToDo){
 
 
-    this.http.patch(
+    return this.http.patch(
       `https://it-db-ad530-default-rtdb.firebaseio.com/todos/${todo.ID}/.json`,
       todo,
       {
         observe: 'response'
       }
     )
-    .subscribe(
-      (responseData) => {
 
-        // this.todoSubject.next(this.getToDos())
-        console.log("todo Patch:", responseData);
-      },
-    );
 
 
   }
@@ -99,6 +93,7 @@ export class ToDoService {
         observe: 'response',
       }
     ).subscribe(issueResp =>{
+      this.todoSubject.next(this.getToDos())
       console.log(issueResp)
     })
   }
