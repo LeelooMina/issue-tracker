@@ -39,7 +39,7 @@ export class AddEditIssuesComponent implements OnInit {
   }
 
   this.issueService.postIssues(issue);
-  this.router.navigate(['/projects'])
+  this.router.navigate(['/project-view', this.ID, this.projectName])
 
   console.log(issue);
 
