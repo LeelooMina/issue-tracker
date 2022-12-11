@@ -10,6 +10,7 @@ import { ProjectViewComponent } from './projects/project-view/project-view.compo
 import { AddEditIssuesComponent } from './projects/add-edit-issues/add-edit-issues.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { IssueDetailsComponent } from './projects/issue-details/issue-details.component';
+import { UserDashboardComponent } from './user-profile/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,10 @@ const routes: Routes = [
     path: 'issue-details/:id',
     component: IssueDetailsComponent
   },
-
+  {
+    path: 'user-dashboard',
+    component: UserDashboardComponent
+  },
 
   {
     path: '',

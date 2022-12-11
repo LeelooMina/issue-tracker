@@ -47,14 +47,15 @@ export class AddEditProjectsComponent implements OnInit {
   this.projectService.postProjects(project);
   this.router.navigate(['/projects'])
 
-  
+
     } else {
       let project: Project  = {
         name: this.projectName,
       description: this.projectDesc,
       admin: this.authService.userEmail,
       allowedUsers: addProject.value.allowedUsers,
-      ID: this.ID }
+      ID: this.ID,
+      publicView: this.publicView}
 
       this.projectService.updateProject(project);
       this.router.navigate(['/projects'])

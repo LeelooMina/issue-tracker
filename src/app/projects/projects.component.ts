@@ -53,9 +53,15 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
-  onChangeNav(){
+  onChangeNav(view: string){
     this.myProjectView = !this.myProjectView
     this.publicProjectView = !this.publicProjectView
+
+    if(view === 'myProjects'){
+      this.projectService.onFetchProjects(this.authService.userEmail).subscribe((payload) => {
+        this.projectList = payload;
+      });
+    }
   }
 
   ngOnInit(): void {
